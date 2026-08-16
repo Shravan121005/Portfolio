@@ -61,10 +61,10 @@
 
   --font-body-lg: var(--font-courier-prime), monospace;
   --font-body-md: var(--font-courier-prime), monospace;
-  --font-headline-lg-mobile: var(--font-anybody), sans-serif;
-  --font-headline-md: var(--font-anybody), sans-serif;
+  --font-headline-lg-mobile: var(--font-jetbrains-mono), monospace;
+  --font-headline-md: var(--font-jetbrains-mono), monospace;
   --font-label-md: var(--font-jetbrains-mono), monospace;
-  --font-headline-lg: var(--font-anybody), sans-serif;
+  --font-headline-lg: var(--font-jetbrains-mono), monospace;
   --font-label-sm: var(--font-jetbrains-mono), monospace;
 }
 
