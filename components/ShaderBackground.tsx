@@ -26,7 +26,8 @@ export default function ShaderBackground() {
     }
     syncSize();
 
-    const gl = (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
+    const gl = (canvas.getContext("webgl") ||
+      canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
     if (!gl) return;
 
     const vs = `attribute vec2 a_position;
@@ -95,7 +96,7 @@ void main() {
     gl.bufferData(
       gl.ARRAY_BUFFER,
       new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
-      gl.STATIC_DRAW
+      gl.STATIC_DRAW,
     );
     const pos = gl.getAttribLocation(prog, "a_position");
     gl.enableVertexAttribArray(pos);
@@ -106,7 +107,7 @@ void main() {
     const uMouse = gl.getUniformLocation(prog, "u_mouse");
 
     const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
-    
+
     function onMouseMove(event: MouseEvent) {
       const rect = canvas?.getBoundingClientRect();
       if (rect && rect.width && rect.height && canvas) {
@@ -116,7 +117,7 @@ void main() {
         mouse.y = ny * canvas.height;
       }
     }
-    
+
     window.addEventListener("mousemove", onMouseMove);
 
     let animationFrameId: number;
@@ -131,7 +132,7 @@ void main() {
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       animationFrameId = requestAnimationFrame(render);
     }
-    
+
     animationFrameId = requestAnimationFrame(render);
 
     return () => {
@@ -145,10 +146,7 @@ void main() {
 
   return (
     <div className="fixed inset-0 w-full h-full z-0 opacity-40 block pointer-events-none">
-      <canvas
-        ref={canvasRef}
-        className="block w-full h-full"
-      />
+      <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );
 }

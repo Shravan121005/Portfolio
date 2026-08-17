@@ -5,7 +5,9 @@ export default function Projects() {
       <header className="mb-12 border-b border-outline-variant pb-6">
         <div className="flex items-end justify-between mb-2">
           <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary uppercase tracking-tight">
-            <span className="cursor-blink">EVIDENCE LOG: TECHNICAL PROJECTS</span>
+            <span className="cursor-blink">
+              EVIDENCE LOG: TECHNICAL PROJECTS
+            </span>
           </h1>
 
           <span className="font-label-sm text-on-surface-variant opacity-70">
@@ -14,15 +16,16 @@ export default function Projects() {
         </div>
 
         <p className="font-body-lg text-on-surface-variant max-w-2xl">
-          &gt; INITIALIZING QUERY...<br />
-          &gt; RETRIEVING ARCHIVED TECHNICAL EXECUTIONS...<br />
+          &gt; INITIALIZING QUERY...
+          <br />
+          &gt; RETRIEVING ARCHIVED TECHNICAL EXECUTIONS...
+          <br />
           &gt; WARNING: CONTENTS MAY CONTAIN HIGHLY CLASSIFIED ALGORITHMS.
         </p>
       </header>
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-
         {/* Project 1: DeepGuard AI */}
         <article className="dossier-card p-dossier-padding flex flex-col h-full group">
           <div className="flex justify-between items-start mb-6 border-b border-outline-variant pb-4">
@@ -50,8 +53,8 @@ export default function Projects() {
 
             <p className="font-body-md text-on-surface-variant mb-4">
               Improved generalization through augmentation and regularization,
-              with a FastAPI inference service and Grad-CAM explainability
-              under &lt;100 ms latency.
+              with a FastAPI inference service and Grad-CAM explainability under
+              &lt;100 ms latency.
             </p>
 
             <div className="flex flex-wrap gap-2 mt-4">
@@ -80,9 +83,7 @@ export default function Projects() {
           <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
             <span className="font-label-sm text-on-surface-variant">
               DATE:{" "}
-              <span className="text-tertiary-fixed-dim">
-                NOV 25 - FEB 26
-              </span>
+              <span className="text-tertiary-fixed-dim">NOV 25 - FEB 26</span>
             </span>
 
             <a
@@ -98,7 +99,6 @@ export default function Projects() {
             </a>
           </div>
         </article>
-
 
         {/* Project 2: BugInsight */}
         <article
@@ -128,9 +128,9 @@ export default function Projects() {
             </p>
 
             <p className="font-body-md text-on-surface-variant mb-4">
-              Improved prediction performance by 12% through NLP-based
-              feature engineering and model optimization, with FastAPI and
-              automated GitHub API integration.
+              Improved prediction performance by 12% through NLP-based feature
+              engineering and model optimization, with FastAPI and automated
+              GitHub API integration.
             </p>
 
             <div className="flex flex-wrap gap-2 mt-4">
@@ -159,9 +159,7 @@ export default function Projects() {
           <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
             <span className="font-label-sm text-on-surface-variant">
               DATE:{" "}
-              <span className="text-tertiary-fixed-dim">
-                MAY 25 - AUG 25
-              </span>
+              <span className="text-tertiary-fixed-dim">MAY 25 - AUG 25</span>
             </span>
 
             <a
@@ -177,7 +175,6 @@ export default function Projects() {
             </a>
           </div>
         </article>
-
 
         {/* Project 3: SmartDiet AI */}
         <article
@@ -202,8 +199,8 @@ export default function Projects() {
 
           <div className="flex-grow mb-6">
             <p className="font-body-md text-on-surface-variant mb-4">
-              Nutrition recommendation and calorie prediction system trained
-              on 500+ dietary records, achieving 78% prediction accuracy.
+              Nutrition recommendation and calorie prediction system trained on
+              500+ dietary records, achieving 78% prediction accuracy.
             </p>
 
             <p className="font-body-md text-on-surface-variant mb-4">
@@ -238,9 +235,7 @@ export default function Projects() {
           <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
             <span className="font-label-sm text-on-surface-variant">
               DATE:{" "}
-              <span className="text-tertiary-fixed-dim">
-                OCT 24 - JAN 25
-              </span>
+              <span className="text-tertiary-fixed-dim">OCT 24 - JAN 25</span>
             </span>
 
             <a
@@ -254,7 +249,6 @@ export default function Projects() {
             </a>
           </div>
         </article>
-
 
         {/* Project 4: Oil Well Choke Prediction */}
         <article
@@ -280,8 +274,8 @@ export default function Projects() {
           <div className="flex-grow mb-6">
             <p className="font-body-md text-on-surface-variant mb-4">
               Autonomous oil well choke control system built for the Honeywell
-              Industrial AI Hackathon using a data-driven Digital Twin and
-              Model Predictive Control.
+              Industrial AI Hackathon using a data-driven Digital Twin and Model
+              Predictive Control.
             </p>
 
             <p className="font-body-md text-on-surface-variant mb-4">
@@ -334,7 +328,6 @@ export default function Projects() {
             </a>
           </div>
         </article>
-
       </div>
     </main>
   );

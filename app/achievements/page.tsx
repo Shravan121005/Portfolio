@@ -23,7 +23,7 @@ export default function Achievements() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     stamps.forEach((stamp) => observer.observe(stamp));
@@ -36,7 +36,6 @@ export default function Achievements() {
 
   return (
     <main className="w-full relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6">
-
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -70,7 +69,6 @@ export default function Achievements() {
       ========================================================= */}
 
       <header className="md:col-span-12 mb-8 border-b border-outline-variant pb-4 relative">
-
         <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
           Milestones &amp; Achievements
           <span className="blinking-cursor"></span>
@@ -86,18 +84,14 @@ export default function Achievements() {
         >
           APPROVED
         </div>
-
       </header>
-
 
       {/* =========================================================
           OFFICIAL COMMENDATIONS
       ========================================================= */}
 
       <section className="md:col-span-7 space-y-8">
-
         <div className="flex items-center gap-2 mb-4 border-b border-outline pb-2">
-
           <span className="material-symbols-outlined text-primary-container">
             military_tech
           </span>
@@ -105,16 +99,13 @@ export default function Achievements() {
           <h2 className="font-headline-md text-headline-md text-primary-container">
             OFFICIAL COMMENDATIONS
           </h2>
-
         </div>
-
 
         {/* =====================================================
             CERTIFICATION 1 — ORACLE
         ===================================================== */}
 
         <article className="dossier-card p-dossier-padding rotate-1 relative transition-transform hover:rotate-0 duration-300">
-
           <div className="tape absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 rotate-2 z-10"></div>
 
           <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
@@ -122,35 +113,29 @@ export default function Achievements() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-
               <span
                 className="material-symbols-outlined text-tertiary-container text-4xl"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 verified
               </span>
-
             </div>
 
             <div>
-
               <h3 className="font-label-md text-primary text-xl mb-1">
-                Oracle Certified Associate, Oracle WebLogic Server 11g System Administrator
+                Oracle Certified Associate, Oracle WebLogic Server 11g System
+                Administrator
               </h3>
 
               <p className="font-body-md text-on-surface-variant">
                 Professional certification covering Oracle WebLogic Server
                 administration and enterprise application server management.
               </p>
-
             </div>
-
           </div>
 
           <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-
             <div>
               <span className="text-outline">ISSUER:</span> ORACLE
             </div>
@@ -158,11 +143,9 @@ export default function Achievements() {
             <div>
               <span className="text-outline">ISSUED:</span> JUL 2026
             </div>
-
           </div>
 
           <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-
             <div
               className="stamp font-headline-md text-xl border-tertiary-container text-tertiary-container"
               data-stamp
@@ -175,22 +158,16 @@ export default function Achievements() {
                 CREDENTIAL STATUS
               </div>
 
-              <div className="font-label-sm text-primary">
-                ACTIVE
-              </div>
+              <div className="font-label-sm text-primary">ACTIVE</div>
             </div>
-
           </div>
-
         </article>
-
 
         {/* =====================================================
             CERTIFICATION 2 — KAGGLE
         ===================================================== */}
 
         <article className="dossier-card p-dossier-padding -rotate-1 relative transition-transform hover:rotate-0 duration-300">
-
           <div className="tape absolute -top-2 left-8 w-12 h-5 -rotate-3 z-10"></div>
 
           <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
@@ -198,20 +175,16 @@ export default function Achievements() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-
               <span
                 className="material-symbols-outlined text-secondary text-4xl"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 psychology
               </span>
-
             </div>
 
             <div>
-
               <h3 className="font-label-md text-primary text-xl mb-1">
                 Intermediate Machine Learning
               </h3>
@@ -220,13 +193,10 @@ export default function Achievements() {
                 Practical Machine Learning certification covering supervised
                 learning, model evaluation, and applied ML workflows.
               </p>
-
             </div>
-
           </div>
 
           <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-
             <div>
               <span className="text-outline">ISSUER:</span> KAGGLE
             </div>
@@ -234,11 +204,9 @@ export default function Achievements() {
             <div>
               <span className="text-outline">ISSUED:</span> JUL 2026
             </div>
-
           </div>
 
           <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-
             <div
               className="stamp font-headline-md text-xl border-secondary text-secondary"
               data-stamp
@@ -251,41 +219,31 @@ export default function Achievements() {
                 CREDENTIAL STATUS
               </div>
 
-              <div className="font-label-sm text-primary">
-                ACTIVE
-              </div>
+              <div className="font-label-sm text-primary">ACTIVE</div>
             </div>
-
           </div>
-
         </article>
-
 
         {/* =====================================================
             CERTIFICATION 3 — IBM
         ===================================================== */}
 
         <article className="dossier-card p-dossier-padding rotate-1 relative transition-transform hover:rotate-0 duration-300">
-
           <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
             DOC_ID: 003
           </div>
 
           <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-
               <span
                 className="material-symbols-outlined text-primary-container text-4xl"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 model_training
               </span>
-
             </div>
 
             <div>
-
               <h3 className="font-label-md text-primary text-xl mb-1">
                 Machine Learning for Data Science
               </h3>
@@ -294,13 +252,10 @@ export default function Achievements() {
                 Certification focused on Machine Learning methods and their
                 application to practical Data Science workflows.
               </p>
-
             </div>
-
           </div>
 
           <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-
             <div>
               <span className="text-outline">ISSUER:</span> IBM
             </div>
@@ -308,11 +263,9 @@ export default function Achievements() {
             <div>
               <span className="text-outline">ISSUED:</span> JUL 2026
             </div>
-
           </div>
 
           <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-
             <div
               className="stamp font-headline-md text-xl border-tertiary-container text-tertiary-container"
               data-stamp
@@ -325,22 +278,16 @@ export default function Achievements() {
                 CREDENTIAL STATUS
               </div>
 
-              <div className="font-label-sm text-primary">
-                ACTIVE
-              </div>
+              <div className="font-label-sm text-primary">ACTIVE</div>
             </div>
-
           </div>
-
         </article>
-
 
         {/* =====================================================
             CERTIFICATION 4 — NETWORKING
         ===================================================== */}
 
         <article className="dossier-card p-dossier-padding -rotate-1 relative transition-transform hover:rotate-0 duration-300">
-
           <div className="tape absolute -top-2 right-12 w-12 h-5 rotate-3 z-10"></div>
 
           <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
@@ -348,20 +295,16 @@ export default function Achievements() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-
               <span
                 className="material-symbols-outlined text-secondary text-4xl"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 lan
               </span>
-
             </div>
 
             <div>
-
               <h3 className="font-label-md text-primary text-xl mb-1">
                 The Bits and Bytes of Computer Networking
               </h3>
@@ -370,25 +313,21 @@ export default function Achievements() {
                 Certification covering core computer networking concepts,
                 protocols, and communication fundamentals.
               </p>
-
             </div>
-
           </div>
 
           <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-
             <div>
-              <span className="text-outline">ISSUER:</span> UNITED LATINO STUDENTS ASSOCIATION
+              <span className="text-outline">ISSUER:</span> UNITED LATINO
+              STUDENTS ASSOCIATION
             </div>
 
             <div>
               <span className="text-outline">ISSUED:</span> NOV 2025
             </div>
-
           </div>
 
           <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-
             <div
               className="stamp font-headline-md text-xl border-secondary text-secondary"
               data-stamp
@@ -401,56 +340,43 @@ export default function Achievements() {
                 CREDENTIAL ID
               </div>
 
-              <div className="font-label-sm text-primary">
-                D7SRMMHRJYJM
-              </div>
+              <div className="font-label-sm text-primary">D7SRMMHRJYJM</div>
             </div>
-
           </div>
-
         </article>
-
 
         {/* =====================================================
             CERTIFICATION 5 — FULL STACK
         ===================================================== */}
 
         <article className="dossier-card p-dossier-padding rotate-1 relative transition-transform hover:rotate-0 duration-300">
-
           <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
             DOC_ID: 005
           </div>
 
           <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-
               <span
                 className="material-symbols-outlined text-primary-container text-4xl"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 code
               </span>
-
             </div>
 
             <div>
-
               <h3 className="font-label-md text-primary text-xl mb-1">
                 The Complete Full-Stack Web Development Bootcamp
               </h3>
 
               <p className="font-body-md text-on-surface-variant">
-                Comprehensive full-stack development training covering
-                modern web technologies, APIs, backend systems, and deployment.
+                Comprehensive full-stack development training covering modern
+                web technologies, APIs, backend systems, and deployment.
               </p>
-
             </div>
-
           </div>
 
           <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-
             <div>
               <span className="text-outline">ISSUER:</span> UDEMY
             </div>
@@ -458,11 +384,9 @@ export default function Achievements() {
             <div>
               <span className="text-outline">ISSUED:</span> MAY 2025
             </div>
-
           </div>
 
           <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-
             <div
               className="stamp font-headline-md text-xl border-tertiary-container text-tertiary-container"
               data-stamp
@@ -479,22 +403,16 @@ export default function Achievements() {
                 UC-50391662-C5E3-4079-80F8-29DDCC49375F
               </div>
             </div>
-
           </div>
-
         </article>
-
       </section>
-
 
       {/* =========================================================
           FIELD OPERATIONS
       ========================================================= */}
 
       <section className="md:col-span-5 space-y-6">
-
         <div className="flex items-center gap-2 mb-4 border-b border-outline pb-2">
-
           <span className="material-symbols-outlined text-primary-container">
             radar
           </span>
@@ -502,18 +420,14 @@ export default function Achievements() {
           <h2 className="font-headline-md text-headline-md text-primary-container">
             FIELD OPERATIONS
           </h2>
-
         </div>
-
 
         {/* =====================================================
             FLIPKART GRID
         ===================================================== */}
 
         <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-
           <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
-
             <div className="absolute inset-0 bg-primary-container opacity-10"></div>
 
             <span
@@ -522,24 +436,19 @@ export default function Achievements() {
             >
               terminal
             </span>
-
           </div>
 
           <div className="flex-grow">
-
             <div className="flex justify-between items-baseline mb-1">
-
               <h4 className="font-label-md text-primary">
                 OP: FLIPKART GRiD 8.0
               </h4>
-
             </div>
 
             <p className="font-body-md text-on-surface-variant text-sm">
-              Competed among thousands of participants nationwide.
-              Advanced to the semifinals.
+              Competed among thousands of participants nationwide. Advanced to
+              the semifinals.
             </p>
-
           </div>
 
           <div
@@ -548,18 +457,14 @@ export default function Achievements() {
           >
             SEMIFINALIST
           </div>
-
         </div>
-
 
         {/* =====================================================
             GIRLSCRIPT SUMMER OF CODE
         ===================================================== */}
 
         <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-
           <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
-
             <div className="absolute inset-0 bg-primary-container opacity-10"></div>
 
             <span
@@ -568,13 +473,10 @@ export default function Achievements() {
             >
               code
             </span>
-
           </div>
 
           <div className="flex-grow">
-
             <div className="flex justify-between items-baseline mb-1">
-
               <h4 className="font-label-md text-primary">
                 OP: GIRLSCRIPT SUMMER OF CODE
               </h4>
@@ -582,14 +484,12 @@ export default function Achievements() {
               <span className="font-label-sm text-on-surface-variant">
                 GSSoC
               </span>
-
             </div>
 
             <p className="font-body-md text-on-surface-variant text-sm">
               Open-source development experience contributing to collaborative
               software projects and real-world development workflows.
             </p>
-
           </div>
 
           <div
@@ -598,18 +498,14 @@ export default function Achievements() {
           >
             CONTRIBUTOR
           </div>
-
         </div>
-
 
         {/* =====================================================
             VITERA
         ===================================================== */}
 
         <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-
           <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
-
             <div className="absolute inset-0 bg-secondary opacity-10"></div>
 
             <span
@@ -618,13 +514,10 @@ export default function Achievements() {
             >
               groups
             </span>
-
           </div>
 
           <div className="flex-grow">
-
             <div className="flex justify-between items-baseline mb-1">
-
               <h4 className="font-label-md text-primary">
                 VITERA CLUB // TECH CO-LEAD
               </h4>
@@ -632,15 +525,13 @@ export default function Achievements() {
               <span className="font-label-sm text-on-surface-variant">
                 NOV 23 - FEB 26
               </span>
-
             </div>
 
             <p className="font-body-md text-on-surface-variant text-sm">
-              Led 10 members, organized 5 technical workshops and coding
-              events for 300+ students, and mentored juniors in Python,
-              Git &amp; Machine Learning.
+              Led 10 members, organized 5 technical workshops and coding events
+              for 300+ students, and mentored juniors in Python, Git &amp;
+              Machine Learning.
             </p>
-
           </div>
 
           <div
@@ -649,38 +540,28 @@ export default function Achievements() {
           >
             COMMAND
           </div>
-
         </div>
-
 
         {/* =====================================================
             QUICK STATS
         ===================================================== */}
 
         <div className="dossier-card p-5 rotate-[-2deg]">
-
           <div className="flex items-center gap-2 mb-4 border-b border-outline-variant pb-2">
-
             <span className="material-symbols-outlined text-tertiary-fixed-dim">
               military_tech
             </span>
 
-            <h3 className="font-headline-md text-primary">
-              RECORD SUMMARY
-            </h3>
-
+            <h3 className="font-headline-md text-primary">RECORD SUMMARY</h3>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-
             <div>
               <span className="font-label-sm text-on-surface-variant block">
                 CERTIFICATIONS
               </span>
 
-              <span className="font-headline-md text-primary">
-                05
-              </span>
+              <span className="font-headline-md text-primary">05</span>
             </div>
 
             <div>
@@ -688,9 +569,7 @@ export default function Achievements() {
                 COMPETITIONS
               </span>
 
-              <span className="font-headline-md text-primary">
-                01+
-              </span>
+              <span className="font-headline-md text-primary">01+</span>
             </div>
 
             <div>
@@ -698,9 +577,7 @@ export default function Achievements() {
                 OPEN SOURCE
               </span>
 
-              <span className="font-headline-md text-primary">
-                GSSoC
-              </span>
+              <span className="font-headline-md text-primary">GSSoC</span>
             </div>
 
             <div>
@@ -708,17 +585,11 @@ export default function Achievements() {
                 LEADERSHIP
               </span>
 
-              <span className="font-headline-md text-primary">
-                10+
-              </span>
+              <span className="font-headline-md text-primary">10+</span>
             </div>
-
           </div>
-
         </div>
-
       </section>
-
     </main>
   );
 }

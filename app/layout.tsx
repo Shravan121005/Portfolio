@@ -34,7 +34,10 @@ export default function RootLayout({
       className={`dark ${courierPrime.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className="bg-background text-on-background min-h-full relative overflow-x-hidden flex flex-col">
         <BootSequence />

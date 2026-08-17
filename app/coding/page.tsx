@@ -34,7 +34,6 @@ export default function Coding() {
 
   return (
     <main className="w-full flex flex-col">
-
       {/* Header Section */}
       <div className="mb-12 border-b border-outline-variant pb-6">
         <h1 className="font-headline-lg text-headline-lg text-primary mb-2 uppercase tracking-tight glitch-hover inline-block">
@@ -42,13 +41,9 @@ export default function Coding() {
         </h1>
 
         <div className="flex items-center gap-4 text-tertiary-fixed-dim font-label-md text-label-md">
-          <span className="material-symbols-outlined text-sm">
-            terminal
-          </span>
+          <span className="material-symbols-outlined text-sm">terminal</span>
 
-          <span className="uppercase">
-            Intercepting algorithmic packets...
-          </span>
+          <span className="uppercase">Intercepting algorithmic packets...</span>
 
           <span className="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-sm text-[10px] animate-pulse">
             LIVE
@@ -56,20 +51,15 @@ export default function Coding() {
         </div>
       </div>
 
-
       {/* Dashboard Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow">
-
         {/* LEFT COLUMN */}
         <div className="lg:col-span-8 flex flex-col gap-8">
-
           {/* ================= LEETCODE ================= */}
           <article className="dossier-card p-dossier-padding rotate-[0.5deg]">
-
             <div className="tape"></div>
 
             <div className="flex flex-wrap gap-4 justify-between items-start mb-6 border-b border-outline-variant pb-2">
-
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-tertiary-fixed-dim text-3xl">
                   code
@@ -85,15 +75,11 @@ export default function Coding() {
                   NODE_ID: LC-SHRAVAN
                 </span>
               </div>
-
             </div>
 
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-
               {/* Difficulty Progress */}
               <div className="col-span-1 md:col-span-2 space-y-4">
-
                 {/* Easy */}
                 <div>
                   <div className="flex justify-between font-label-md text-label-md text-on-surface-variant mb-1">
@@ -108,7 +94,6 @@ export default function Coding() {
                     <div className="h-full bg-tertiary-fixed-dim w-[32.2%]"></div>
                   </div>
                 </div>
-
 
                 {/* Medium */}
                 <div>
@@ -125,7 +110,6 @@ export default function Coding() {
                   </div>
                 </div>
 
-
                 {/* Hard */}
                 <div>
                   <div className="flex justify-between font-label-md text-label-md text-on-surface-variant mb-1">
@@ -140,13 +124,10 @@ export default function Coding() {
                     <div className="h-full bg-secondary-container w-[12%]"></div>
                   </div>
                 </div>
-
               </div>
-
 
               {/* Percentile */}
               <div className="col-span-1 border-t md:border-t-0 md:border-l border-outline-variant pt-6 md:pt-0 md:pl-6 flex flex-col justify-center">
-
                 <span className="font-label-sm text-label-sm text-on-surface-variant mb-2 block uppercase">
                   Problem-Solving Percentile
                 </span>
@@ -158,26 +139,19 @@ export default function Coding() {
                 <span className="font-label-sm text-on-surface-variant mt-2 uppercase">
                   LeetCode
                 </span>
-
               </div>
-
             </div>
-
 
             {/* LeetCode Stats */}
             <div className="mt-4 pt-4 border-t border-outline-variant border-dashed">
-
               <p className="font-body-md text-body-md text-on-surface-variant uppercase">
                 STATUS: Active connection maintained. 400+ problems solved
                 across all difficulty tiers.
               </p>
-
             </div>
-
 
             {/* Profile Button */}
             <div className="mt-5 flex justify-center sm:justify-end">
-
               <a
                 href="https://leetcode.com/u/Shravan121005/"
                 target="_blank"
@@ -189,19 +163,13 @@ export default function Coding() {
                   arrow_forward
                 </span>
               </a>
-
             </div>
-
           </article>
-
 
           {/* ================= CODEFORCES ================= */}
           <article className="dossier-card p-dossier-padding -rotate-[1deg]">
-
             <div className="flex flex-wrap gap-4 justify-between items-start mb-6 border-b border-outline-variant pb-2">
-
               <div className="flex items-center gap-3">
-
                 <span className="material-symbols-outlined text-primary-container text-3xl">
                   terminal
                 </span>
@@ -209,31 +177,23 @@ export default function Coding() {
                 <h2 className="font-headline-md text-headline-md text-primary tracking-tight uppercase">
                   TARGET_BETA: CODEFORCES
                 </h2>
-
               </div>
 
               <div className="bg-surface-container px-2 py-1 border border-outline-variant">
-
                 <span className="font-label-sm text-label-sm text-on-surface-variant">
                   NODE_ID: CF-SHRAVAN
                 </span>
-
               </div>
-
             </div>
 
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-
               {/* Current Rating */}
               <div className="bg-surface-container p-4 border border-outline-variant">
-
                 <span className="font-label-sm text-label-sm text-on-surface-variant block mb-1 uppercase">
                   Current Signal Strength
                 </span>
 
                 <div className="flex items-baseline gap-2">
-
                   <span className="font-headline-lg text-headline-lg text-primary-container data-counter">
                     1357
                   </span>
@@ -241,21 +201,16 @@ export default function Coding() {
                   <span className="font-label-md text-label-md text-on-surface-variant uppercase">
                     Rating
                   </span>
-
                 </div>
-
               </div>
-
 
               {/* Peak Rating */}
               <div className="bg-surface-container p-4 border border-outline-variant">
-
                 <span className="font-label-sm text-label-sm text-on-surface-variant block mb-1 uppercase">
                   Peak Signal Detected
                 </span>
 
                 <div className="flex items-baseline gap-2">
-
                   <span className="font-headline-md text-headline-md text-tertiary-fixed-dim data-counter">
                     1357
                   </span>
@@ -263,16 +218,11 @@ export default function Coding() {
                   <span className="font-label-md text-label-md text-on-surface-variant uppercase">
                     Rating
                   </span>
-
                 </div>
-
               </div>
-
             </div>
 
-
             <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end border-t border-outline-variant pt-4">
-
               <span className="font-body-md text-body-md text-on-surface-variant uppercase">
                 COMPETITION HISTORY: DATA STRUCTURES & ALGORITHMS
               </span>
@@ -283,23 +233,15 @@ export default function Coding() {
               >
                 OPEN PROFILE
               </a>
-
             </div>
-
           </article>
-
         </div>
-
 
         {/* RIGHT COLUMN */}
         <div className="lg:col-span-4 flex flex-col gap-8">
-
-
           {/* ================= GITHUB ================= */}
           <aside className="dossier-card p-dossier-padding rotate-[2deg]">
-
             <div className="flex items-center gap-2 mb-4 border-b border-outline-variant pb-2">
-
               <span className="material-symbols-outlined text-secondary-container">
                 folder_data
               </span>
@@ -307,14 +249,10 @@ export default function Coding() {
               <h3 className="font-headline-md text-headline-md text-primary text-xl uppercase tracking-tight">
                 REPO_ARCHIVE: GITHUB
               </h3>
-
             </div>
 
-
             <div className="space-y-4 mb-6">
-
               <div className="flex justify-between items-center border-b border-outline-variant border-dashed pb-2">
-
                 <span className="font-label-md text-label-md text-on-surface-variant uppercase">
                   Engineering Focus
                 </span>
@@ -322,12 +260,9 @@ export default function Coding() {
                 <span className="font-label-md text-label-md text-tertiary-fixed-dim">
                   FULL STACK
                 </span>
-
               </div>
 
-
               <div className="flex justify-between items-center border-b border-outline-variant border-dashed pb-2">
-
                 <span className="font-label-md text-label-md text-on-surface-variant uppercase">
                   Primary Domain
                 </span>
@@ -335,12 +270,9 @@ export default function Coding() {
                 <span className="font-label-md text-label-md text-primary">
                   ML / AI
                 </span>
-
               </div>
 
-
               <div className="flex justify-between items-center pb-2">
-
                 <span className="font-label-md text-label-md text-on-surface-variant uppercase">
                   Public Repositories
                 </span>
@@ -348,11 +280,8 @@ export default function Coding() {
                 <span className="font-label-md text-label-md text-primary-container">
                   20+
                 </span>
-
               </div>
-
             </div>
-
 
             <a
               href="https://github.com/Shravan121005"
@@ -360,23 +289,16 @@ export default function Coding() {
               rel="noopener noreferrer"
               className="bg-surface-container-highest p-3 border border-outline-variant flex items-center justify-center gap-2 hover:text-primary transition-colors"
             >
-
-              <span className="material-symbols-outlined">
-                open_in_new
-              </span>
+              <span className="material-symbols-outlined">open_in_new</span>
 
               <span className="font-label-sm text-label-sm uppercase tracking-widest">
                 Open GitHub Archive
               </span>
-
             </a>
-
           </aside>
-
 
           {/* Evidence Tag */}
           <div className="bg-surface-tint text-on-primary px-4 py-2 border-l-4 border-on-primary-fixed-variant self-end w-4/5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[-3deg] relative">
-
             <div className="absolute -left-2 top-1/2 w-4 h-4 bg-background rounded-full border border-outline-variant transform -translate-y-1/2"></div>
 
             <span className="font-label-md text-label-md font-bold uppercase block">
@@ -387,13 +309,9 @@ export default function Coding() {
               Subject demonstrates consistent algorithmic threat capability.
               Monitor closely.
             </span>
-
           </div>
-
         </div>
-
       </div>
-
     </main>
   );
 }
