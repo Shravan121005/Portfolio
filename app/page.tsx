@@ -82,7 +82,7 @@ export default function Home() {
 
       {/* ── Dossier Content (Right Col) ── */}
       <motion.div
-        className="w-full md:w-2/3 flex flex-col gap-8 rotate-[1deg]"
+        className="w-full md:w-2/3 flex flex-col gap-8 md:rotate-[1deg]"
         variants={staggerContainer}
         initial={initialState}
         animate="visible"
@@ -131,7 +131,7 @@ export default function Home() {
               <div className="font-label-sm text-label-sm text-primary opacity-70 mb-1">
                 KNOWN ASSOCIATIONS
               </div>
-              <div className="font-bold text-on-surface typewriter-text w-full text-[11px] sm:text-sm md:text-base">
+              <div className="font-bold text-on-surface w-full text-[11px] sm:text-sm md:text-base md:typewriter-text">
                 MACHINE_LEARNING_ENGINEER // FULL_STACK_DEV
               </div>
             </motion.div>
@@ -160,16 +160,16 @@ export default function Home() {
           variants={fadeUp}
           transition={{ ...transitionBase, delay: 0.1 }}
         >
-          <div className="absolute -left-12 top-[68px] w-24 h-6 bg-secondary-container text-on-secondary-container font-label-sm flex items-center justify-center rotate-[-90deg] border border-[#333333] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] z-10">
+          <div className="hidden md:flex absolute -left-12 top-[68px] w-24 h-6 bg-secondary-container text-on-secondary-container font-label-sm items-center justify-center rotate-[-90deg] border border-[#333333] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] z-10">
             EVIDENCE
           </div>
-          <h2 className="font-headline-md text-headline-md text-primary mb-6 ml-6 border-b border-outline pb-2">
+          <h2 className="font-headline-md text-headline-md text-primary mb-6 md:ml-6 border-b border-outline pb-2">
             OPERATIONAL CAPABILITIES
           </h2>
 
           {/* Capability cells — staggered entrance */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 ml-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:ml-6"
             variants={staggerContainer}
             initial={initialState}
             animate="visible"

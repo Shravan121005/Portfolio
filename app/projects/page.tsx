@@ -120,16 +120,16 @@ function ProjectCard({
       }
     >
       {/* Card header */}
-      <div className="flex justify-between items-start mb-6 border-b border-outline-variant pb-4">
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-6 border-b border-outline-variant pb-4">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="material-symbols-outlined text-primary shrink-0">
             {project.icon}
           </span>
-          <h2 className="font-headline-md text-primary tracking-tight">
+          <h2 className="font-headline-md text-primary tracking-tight text-xl md:text-[32px] break-words min-w-0">
             {project.exhibit}: {project.title}
           </h2>
         </div>
-        <span className="font-label-sm bg-surface-bright text-on-surface px-2 py-1 font-bold">
+        <span className="font-label-sm bg-surface-bright text-on-surface px-2 py-1 font-bold self-start shrink-0">
           {project.caseNo}
         </span>
       </div>
@@ -199,11 +199,11 @@ export default function Projects() {
           prefersReducedMotion ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
         }
       >
-        <div className="flex items-end justify-between mb-2">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-2">
           <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary uppercase tracking-tight">
             <span className="blinking-cursor">EVIDENCE LOG: TECHNICAL PROJECTS</span>
           </h1>
-          <span className="font-label-sm text-on-surface-variant opacity-70">
+          <span className="font-label-sm text-on-surface-variant opacity-70 shrink-0">
             REF: DOC-77A // EXH. 01-04
           </span>
         </div>

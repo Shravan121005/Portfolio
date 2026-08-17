@@ -108,11 +108,11 @@ export default function Coding() {
         animate={headerInView ? { opacity: 1, x: 0 } : {}}
         transition={transitionBase}
       >
-        <h1 className="font-headline-lg text-headline-lg text-primary mb-2 uppercase tracking-tight glitch-hover inline-block">
+        <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2 uppercase tracking-tight glitch-hover inline-block">
           NETWORK INTEL: CODING PROFILES
         </h1>
 
-        <div className="flex items-center gap-4 text-tertiary-fixed-dim font-label-md text-label-md">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4 text-tertiary-fixed-dim font-label-md text-label-md">
           <span className="material-symbols-outlined text-sm">terminal</span>
           <span className="uppercase">Intercepting algorithmic packets...</span>
           <span className="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-sm text-[10px] animate-pulse">
@@ -156,7 +156,7 @@ export default function Coding() {
               <div className="col-span-1 md:col-span-2 space-y-5">
                 {/* Easy */}
                 <div>
-                  <div className="flex justify-between font-label-md text-label-md text-on-surface-variant mb-2">
+                  <div className="flex justify-between flex-wrap gap-x-2 font-label-md text-label-md text-on-surface-variant mb-2">
                     <span>DECRYPTION PROGRESS (EASY)</span>
                     <Counter
                       target={148}
@@ -172,7 +172,7 @@ export default function Coding() {
 
                 {/* Medium */}
                 <div>
-                  <div className="flex justify-between font-label-md text-label-md text-on-surface-variant mb-2">
+                  <div className="flex justify-between flex-wrap gap-x-2 font-label-md text-label-md text-on-surface-variant mb-2">
                     <span>DECRYPTION PROGRESS (MEDIUM)</span>
                     <Counter
                       target={256}
@@ -188,7 +188,7 @@ export default function Coding() {
 
                 {/* Hard */}
                 <div>
-                  <div className="flex justify-between font-label-md text-label-md text-on-surface-variant mb-2">
+                  <div className="flex justify-between flex-wrap gap-x-2 font-label-md text-label-md text-on-surface-variant mb-2">
                     <span>DECRYPTION PROGRESS (HARD)</span>
                     <Counter
                       target={55}
@@ -208,7 +208,7 @@ export default function Coding() {
                 <span className="font-label-sm text-label-sm text-on-surface-variant mb-2 block uppercase">
                   Problem-Solving Percentile
                 </span>
-                <div className="font-headline-lg text-headline-lg text-tertiary-fixed-dim leading-none">
+                <div className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-tertiary-fixed-dim leading-none">
                   TOP{" "}
                   <Counter
                     target={6}

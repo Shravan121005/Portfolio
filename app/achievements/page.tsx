@@ -122,7 +122,7 @@ export default function Achievements() {
         </p>
 
         {/* Header stamp */}
-        <div className="absolute top-0 right-0">
+        <div className="sm:absolute sm:top-0 sm:right-0 mt-4 sm:mt-0 flex justify-start sm:justify-end">
           <Stamp text="APPROVED" colorClass="border-[#c31e00] text-[#c31e00]" />
         </div>
       </motion.header>
@@ -140,7 +140,7 @@ export default function Achievements() {
 
         {/* ── ORACLE ── */}
         <AnimatedCard delay={0.05}>
-          <article className="dossier-card p-dossier-padding rotate-1 relative transition-transform hover:rotate-0 duration-300">
+          <article className="dossier-card p-dossier-padding md:rotate-1 relative transition-transform hover:rotate-0 duration-300">
             <div className="tape absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 rotate-2 z-10" />
             <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
               DOC_ID: 001
@@ -193,7 +193,7 @@ export default function Achievements() {
 
         {/* ── KAGGLE ── */}
         <AnimatedCard delay={0.1}>
-          <article className="dossier-card p-dossier-padding -rotate-1 relative transition-transform hover:rotate-0 duration-300">
+          <article className="dossier-card p-dossier-padding md:-rotate-1 relative transition-transform hover:rotate-0 duration-300">
             <div className="tape absolute -top-2 left-8 w-12 h-5 -rotate-3 z-10" />
             <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
               DOC_ID: 002
@@ -245,7 +245,7 @@ export default function Achievements() {
 
         {/* ── IBM ── */}
         <AnimatedCard delay={0.15}>
-          <article className="dossier-card p-dossier-padding rotate-1 relative transition-transform hover:rotate-0 duration-300">
+          <article className="dossier-card p-dossier-padding md:rotate-1 relative transition-transform hover:rotate-0 duration-300">
             <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
               DOC_ID: 003
             </div>
@@ -296,7 +296,7 @@ export default function Achievements() {
 
         {/* ── NETWORKING ── */}
         <AnimatedCard delay={0.2}>
-          <article className="dossier-card p-dossier-padding -rotate-1 relative transition-transform hover:rotate-0 duration-300">
+          <article className="dossier-card p-dossier-padding md:-rotate-1 relative transition-transform hover:rotate-0 duration-300">
             <div className="tape absolute -top-2 right-12 w-12 h-5 rotate-3 z-10" />
             <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
               DOC_ID: 004
@@ -349,7 +349,7 @@ export default function Achievements() {
 
         {/* ── FULL STACK BOOTCAMP ── */}
         <AnimatedCard delay={0.25}>
-          <article className="dossier-card p-dossier-padding rotate-1 relative transition-transform hover:rotate-0 duration-300">
+          <article className="dossier-card p-dossier-padding md:rotate-1 relative transition-transform hover:rotate-0 duration-300">
             <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
               DOC_ID: 005
             </div>
@@ -511,7 +511,7 @@ export default function Achievements() {
 
         {/* Record Summary */}
         <AnimatedCard delay={0.2} variant="slideLeft">
-          <div className="dossier-card p-5 rotate-[-2deg]">
+          <div className="dossier-card p-5 md:-rotate-2">
             <div className="flex items-center gap-2 mb-4 border-b border-outline-variant pb-2">
               <span className="material-symbols-outlined text-tertiary-fixed-dim">
                 military_tech

@@ -32,9 +32,9 @@ export default function NavBar() {
     <>
       <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-gutter py-4 bg-surface/95 backdrop-blur-sm border-b-2 border-outline dark:border-outline-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         {/* Brand */}
-        <div className="font-label-md text-label-sm sm:text-label-md font-bold tracking-widest text-primary bg-on-primary-fixed-variant px-2 py-1 truncate max-w-[50%] md:max-w-none relative">
+        <Link href="/" className="font-label-md text-label-sm sm:text-label-md font-bold tracking-widest text-primary bg-on-primary-fixed-variant px-2 py-1 truncate max-w-[50%] md:max-w-none relative hover:text-on-primary hover:bg-primary transition-colors block">
           CASE_FILE: SHRAVAN_JAIN
-        </div>
+        </Link>
 
         {/* Desktop nav links */}
         <div className="hidden md:flex space-x-6">
@@ -181,15 +181,15 @@ export default function NavBar() {
         </AnimatePresence>
       </nav>
 
-      {/* ── Desktop Left Hanging Pill ── */}
+      {/* ── Left Hanging Pill (Desktop) / Bottom Dock (Mobile) ── */}
       <AnimatePresence>
         {isAccessOpen && (
           <motion.div
             key="access-pill"
-            className="hidden md:flex fixed top-1/2 -translate-y-1/2 left-[max(1.5rem,calc(25vw-21.75rem))] w-14 py-4 bg-surface-container/90 backdrop-blur-md border-2 border-outline rounded-[40px] flex-col items-center gap-4 z-40 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-            initial={{ opacity: 0, scale: 0.9, x: -8 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            exit={{ opacity: 0, scale: 0.9, x: -8 }}
+            className="flex fixed md:top-1/2 md:-translate-y-1/2 bottom-4 left-1/2 -translate-x-1/2 md:-translate-x-0 md:left-[max(1.5rem,calc(25vw-21.75rem))] md:w-14 w-[calc(100%-2rem)] max-w-sm md:py-4 px-6 md:px-0 py-3 bg-surface-container/90 backdrop-blur-md border-2 border-outline rounded-[40px] flex-row md:flex-col items-center justify-between md:justify-center gap-2 md:gap-4 z-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            initial={{ opacity: 0, scale: 0.9, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 16 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Gold Status Dot */}
@@ -209,7 +209,7 @@ export default function NavBar() {
               </span>
             </motion.a>
 
-            <div className="w-6 h-[2px] bg-outline-variant/50" />
+            <div className="h-6 w-[2px] md:w-6 md:h-[2px] bg-outline-variant/50" />
 
             {/* LinkedIn */}
             <motion.a
@@ -224,7 +224,7 @@ export default function NavBar() {
               <span className="text-[14px] tracking-tighter">in</span>
             </motion.a>
 
-            <div className="w-6 h-[2px] bg-outline-variant/50" />
+            <div className="h-6 w-[2px] md:w-6 md:h-[2px] bg-outline-variant/50" />
 
             {/* GitHub */}
             <motion.a
@@ -239,7 +239,7 @@ export default function NavBar() {
               <span className="text-[14px] tracking-tighter">GH</span>
             </motion.a>
 
-            <div className="w-6 h-[2px] bg-outline-variant/50" />
+            <div className="h-6 w-[2px] md:w-6 md:h-[2px] bg-outline-variant/50" />
 
             {/* Email */}
             <motion.a
