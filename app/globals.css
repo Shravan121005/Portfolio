@@ -129,6 +129,7 @@
 }
 
 @layer utilities {
+  /* ── Scanline overlay ── */
   .scanlines {
     background: linear-gradient(
       to bottom,
@@ -141,6 +142,8 @@
     pointer-events: none;
     z-index: 40;
   }
+
+  /* ── Redacted text reveal ── */
   .redacted {
     background-color: #000;
     color: #000;
@@ -154,19 +157,19 @@
     color: #fff;
     background-color: transparent;
   }
+
+  /* ── Glitch hover nudge ── */
   .glitch-hover:hover {
     transform: translateX(2px);
   }
+
+  /* ── Blinking cursor ── */
   .blinking-cursor::after {
     content: "▋";
     animation: blink 1s step-end infinite;
   }
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
 
+  /* ── Dossier card base ── */
   .dossier-card {
     border: 1px solid #333333;
     box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
@@ -174,6 +177,32 @@
     position: relative;
   }
 
+  /* ── Tape strip ── */
+  .tape {
+    display: block;
+    background-color: rgba(233, 196, 0, 0.45);
+    backdrop-filter: blur(2px);
+  }
+
+  /* ── Evidence tag ── */
+  .evidence-tag {
+    border: 1px solid #4d4732;
+    position: relative;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .evidence-tag:hover {
+    border-color: #ffd700;
+    color: #ffd700;
+  }
+
+  /* ── Status indicator pulse ── */
+  .status-pulse {
+    animation: status-pulse 2.5s ease-in-out infinite;
+  }
+
+  /* ── Typewriter text ── */
   .typewriter-text {
     overflow: hidden;
     border-right: 0.15em solid #fff6df;
@@ -183,6 +212,62 @@
     animation:
       typing 3.5s steps(40, end),
       blink-caret 0.75s step-end infinite;
+  }
+
+  /* ── Button hover sweep ── */
+  .btn-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-sweep::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 215, 0, 0.12),
+      transparent
+    );
+    transition: left 0.4s ease;
+  }
+  .btn-sweep:hover::before {
+    left: 100%;
+  }
+
+  /* ── Scan sweep (horizontal moving highlight) ── */
+  .scan-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .scan-sweep::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(233, 196, 0, 0.04),
+      transparent
+    );
+    animation: scan-move 4s linear infinite;
+    pointer-events: none;
+  }
+
+  /* ═══════════════════════════════════════
+     KEYFRAMES
+  ═══════════════════════════════════════ */
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
   }
 
   @keyframes typing {
@@ -201,6 +286,82 @@
     }
     50% {
       border-color: #fff6df;
+    }
+  }
+
+  @keyframes status-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    50% {
+      opacity: 0.7;
+      box-shadow: 0 0 0 6px rgba(255, 215, 0, 0);
+    }
+  }
+
+  @keyframes scan-move {
+    0% {
+      left: -60%;
+    }
+    100% {
+      left: 160%;
+    }
+  }
+
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    92% {
+      opacity: 1;
+    }
+    93% {
+      opacity: 0.6;
+    }
+    94% {
+      opacity: 1;
+    }
+    96% {
+      opacity: 0.8;
+    }
+    97% {
+      opacity: 1;
+    }
+  }
+
+  /* ═══════════════════════════════════════
+     REDUCED MOTION — disable all animations
+  ═══════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .typewriter-text {
+      overflow: visible;
+      border-right: none;
+      white-space: normal;
+      animation: none;
+    }
+
+    .blinking-cursor::after {
+      animation: none;
+      content: "";
+    }
+
+    .scan-sweep::after {
+      display: none;
+    }
+
+    .status-pulse {
+      animation: none;
     }
   }
 }
