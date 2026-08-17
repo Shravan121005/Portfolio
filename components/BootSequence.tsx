@@ -44,7 +44,9 @@ export default function BootSequence() {
       } else {
         timeoutId = setTimeout(() => {
           setPhase("fadeout");
-          timeoutId = setTimeout(() => {
+          // Do not assign to timeoutId, otherwise the effect cleanup
+          // (triggered by phase changing to "fadeout") will cancel this timeout!
+          setTimeout(() => {
             setPhase("done");
             sessionStorage.setItem("booted", "1");
           }, 400);
@@ -62,7 +64,9 @@ export default function BootSequence() {
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex flex-col justify-center items-center p-8"
+      className={`fixed inset-0 z-[200] flex flex-col justify-center items-center p-8 ${
+        phase === "fadeout" ? "pointer-events-none" : ""
+      }`}
       style={{
         backgroundColor: "#0a0a0a",
         opacity: phase === "fadeout" ? 0 : 1,
