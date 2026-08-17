@@ -77,7 +77,7 @@ export default function Projects() {
             </div>
           </div>
 
-          <div className="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+          <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
             <span className="font-label-sm text-on-surface-variant">
               DATE:{" "}
               <span className="text-tertiary-fixed-dim">
@@ -156,7 +156,7 @@ export default function Projects() {
             </div>
           </div>
 
-          <div className="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+          <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
             <span className="font-label-sm text-on-surface-variant">
               DATE:{" "}
               <span className="text-tertiary-fixed-dim">
@@ -235,7 +235,7 @@ export default function Projects() {
             </div>
           </div>
 
-          <div className="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+          <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
             <span className="font-label-sm text-on-surface-variant">
               DATE:{" "}
               <span className="text-tertiary-fixed-dim">
@@ -313,7 +313,7 @@ export default function Projects() {
             </div>
           </div>
 
-          <div className="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+          <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
             <span className="font-label-sm text-on-surface-variant">
               EVENT:{" "}
               <span className="text-tertiary-fixed-dim">

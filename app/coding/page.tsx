@@ -68,7 +68,7 @@ export default function Coding() {
 
             <div className="tape"></div>
 
-            <div className="flex justify-between items-start mb-6 border-b border-outline-variant pb-2">
+            <div className="flex flex-wrap gap-4 justify-between items-start mb-6 border-b border-outline-variant pb-2">
 
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-tertiary-fixed-dim text-3xl">
@@ -145,7 +145,7 @@ export default function Coding() {
 
 
               {/* Percentile */}
-              <div className="col-span-1 border-l border-outline-variant pl-6 flex flex-col justify-center">
+              <div className="col-span-1 border-t md:border-t-0 md:border-l border-outline-variant pt-6 md:pt-0 md:pl-6 flex flex-col justify-center">
 
                 <span className="font-label-sm text-label-sm text-on-surface-variant mb-2 block uppercase">
                   Problem-Solving Percentile
@@ -176,13 +176,13 @@ export default function Coding() {
 
 
             {/* Profile Button */}
-            <div className="mt-5 flex justify-end">
+            <div className="mt-5 flex justify-center sm:justify-end">
 
               <a
                 href="https://leetcode.com/u/Shravan121005/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 uppercase hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform border border-on-primary-container shadow-[2px_2px_0px_0px_#000]"
+                className="bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 uppercase hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform border border-on-primary-container shadow-[2px_2px_0px_0px_#000] w-full sm:w-auto text-center"
               >
                 OPEN LEETCODE
                 <span className="material-symbols-outlined text-sm ml-2 align-middle">
@@ -198,7 +198,7 @@ export default function Coding() {
           {/* ================= CODEFORCES ================= */}
           <article className="dossier-card p-dossier-padding -rotate-[1deg]">
 
-            <div className="flex justify-between items-start mb-6 border-b border-outline-variant pb-2">
+            <div className="flex flex-wrap gap-4 justify-between items-start mb-6 border-b border-outline-variant pb-2">
 
               <div className="flex items-center gap-3">
 
@@ -271,7 +271,7 @@ export default function Coding() {
             </div>
 
 
-            <div className="mt-6 flex justify-between items-end border-t border-outline-variant pt-4">
+            <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end border-t border-outline-variant pt-4">
 
               <span className="font-body-md text-body-md text-on-surface-variant uppercase">
                 COMPETITION HISTORY: DATA STRUCTURES & ALGORITHMS
@@ -279,7 +279,7 @@ export default function Coding() {
 
               <a
                 href="https://codeforces.com/profile/ShravanJain"
-                className="bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 uppercase hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform border border-on-primary-container shadow-[2px_2px_0px_0px_#000]"
+                className="bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 uppercase hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform border border-on-primary-container shadow-[2px_2px_0px_0px_#000] w-full sm:w-auto text-center"
               >
                 OPEN PROFILE
               </a>

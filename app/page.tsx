@@ -3,7 +3,7 @@ export default function Home() {
     <main className="flex flex-col md:flex-row gap-12 items-start justify-center w-full">
       {/* Subject Polaroid (Left Col) */}
       <div className="w-full md:w-1/3 flex justify-center md:justify-end md:sticky md:top-32 rotate-[-2deg] transition-transform hover:rotate-0 duration-300">
-        <div className="bg-surface-container p-4 pb-12 border-2 border-outline shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative w-80">
+        <div className="bg-surface-container p-4 pb-12 border-2 border-outline shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative w-full max-w-80">
           {/* Tape */}
           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-surface-tint/60 backdrop-blur-sm rotate-2 z-20"></div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -17,7 +17,7 @@ export default function Home() {
             <span className="text-error font-bold blinking-cursor">STATUS: ACTIVE</span>
           </div>
           <div className="mt-4 font-label-md text-body-md text-on-surface opacity-70 italic">
-            "Models.Systems.Logic."
+            &quot;Models.Systems.Logic.&quot;
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@ export default function Home() {
             </div>
             <div className="border-l-2 border-surface-tint pl-4 md:col-span-2">
               <div className="font-label-sm text-label-sm text-primary opacity-70 mb-1">KNOWN ASSOCIATIONS</div>
-              <div className="font-bold text-on-surface typewriter-text w-full">MACHINE_LEARNING_ENGINEER // FULL_STACK_DEV</div>
+              <div className="font-bold text-on-surface typewriter-text w-full text-[11px] sm:text-sm md:text-base">MACHINE_LEARNING_ENGINEER // FULL_STACK_DEV</div>
             </div>
           </div>
           <div className="bg-surface-container-lowest p-4 border border-outline-variant text-body-md font-body-md">
@@ -87,8 +87,8 @@ export default function Home() {
         </div>
 
         {/* Action Area */}
-        <div className="flex justify-end mt-4">
-          <a href="mailto:shravanjain.dev@gmail.com" className="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] glitch-hover flex items-center gap-2 cursor-pointer">
+        <div className="flex justify-start md:justify-end mt-4">
+          <a href="mailto:shravanjain.dev@gmail.com" className="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] glitch-hover flex items-center justify-center gap-2 cursor-pointer w-full md:w-auto text-center">
             <span className="material-symbols-outlined">mail</span>
             CONTACT SUBJECT
           </a>

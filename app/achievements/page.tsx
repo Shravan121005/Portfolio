@@ -121,7 +121,7 @@ export default function Achievements() {
             DOC_ID: 001
           </div>
 
-          <div className="flex items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
 
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
 
@@ -161,7 +161,7 @@ export default function Achievements() {
 
           </div>
 
-          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex justify-between items-end">
+          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
 
             <div
               className="stamp font-headline-md text-xl border-tertiary-container text-tertiary-container"
@@ -197,7 +197,7 @@ export default function Achievements() {
             DOC_ID: 002
           </div>
 
-          <div className="flex items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
 
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
 
@@ -237,7 +237,7 @@ export default function Achievements() {
 
           </div>
 
-          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex justify-between items-end">
+          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
 
             <div
               className="stamp font-headline-md text-xl border-secondary text-secondary"
@@ -271,7 +271,7 @@ export default function Achievements() {
             DOC_ID: 003
           </div>
 
-          <div className="flex items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
 
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
 
@@ -311,7 +311,7 @@ export default function Achievements() {
 
           </div>
 
-          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex justify-between items-end">
+          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
 
             <div
               className="stamp font-headline-md text-xl border-tertiary-container text-tertiary-container"
@@ -347,7 +347,7 @@ export default function Achievements() {
             DOC_ID: 004
           </div>
 
-          <div className="flex items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
 
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
 
@@ -387,7 +387,7 @@ export default function Achievements() {
 
           </div>
 
-          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex justify-between items-end">
+          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
 
             <div
               className="stamp font-headline-md text-xl border-secondary text-secondary"
@@ -421,7 +421,7 @@ export default function Achievements() {
             DOC_ID: 005
           </div>
 
-          <div className="flex items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
 
             <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
 
@@ -461,7 +461,7 @@ export default function Achievements() {
 
           </div>
 
-          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex justify-between items-end">
+          <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
 
             <div
               className="stamp font-headline-md text-xl border-tertiary-container text-tertiary-container"
@@ -510,7 +510,7 @@ export default function Achievements() {
             FLIPKART GRID
         ===================================================== */}
 
-        <div className="dossier-card p-4 flex gap-4 items-center">
+        <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
 
           <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
 
@@ -556,7 +556,7 @@ export default function Achievements() {
             GIRLSCRIPT SUMMER OF CODE
         ===================================================== */}
 
-        <div className="dossier-card p-4 flex gap-4 items-center">
+        <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
 
           <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
 
@@ -606,7 +606,7 @@ export default function Achievements() {
             VITERA
         ===================================================== */}
 
-        <div className="dossier-card p-4 flex gap-4 items-center">
+        <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
 
           <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
 
