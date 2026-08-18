@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Courier_Prime, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
@@ -79,6 +80,20 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
+
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZE62NZPWLP"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZE62NZPWLP');
+        `}
+      </Script>
       <body
         className="bg-background text-on-background min-h-full relative flex flex-col"
         style={{ overflowX: "hidden" }}
