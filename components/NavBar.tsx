@@ -158,14 +158,16 @@ export default function NavBar() {
               Hidden on mobile
               ------------------------------------------------ */}
 
-          <button
-            onClick={toggleAccess}
-            className="hidden md:flex material-symbols-outlined text-primary cursor-pointer hover:text-tertiary-container p-1 focus:outline-none transition-colors"
-            title="Toggle Subject Access"
-            aria-label="Toggle subject access panel"
-          >
-            {isAccessOpen ? "close" : "menu"}
-          </button>
+          <div className="hidden md:block">
+            <button
+              onClick={toggleAccess}
+              className="material-symbols-outlined text-primary cursor-pointer hover:text-tertiary-container p-1 focus:outline-none transition-colors"
+              title="Toggle Subject Access"
+              aria-label="Toggle subject access panel"
+            >
+              {isAccessOpen ? "close" : "menu"}
+            </button>
+          </div>
 
           {/* ==================================================
               MOBILE CONTROLS
