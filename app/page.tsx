@@ -168,7 +168,7 @@ export default function Home() {
           transition={{ ...transitionBase, delay: 0.1 }}
         >
           <div className="hidden md:flex absolute -left-12 top-[68px] w-24 h-6 bg-secondary-container text-on-secondary-container font-label-sm items-center justify-center rotate-[-90deg] border border-[#333333] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] z-10">
-            PROJECTS
+            EXPERTISE
           </div>
           <h2 className="font-headline-md text-headline-md text-primary mb-6 md:ml-6 border-b border-outline pb-2">
             TECHNICAL CAPABILITIES
@@ -223,7 +223,7 @@ export default function Home() {
             <span className="material-symbols-outlined text-[18px]">
               manage_accounts
             </span>
-            VIEW ENGINEERING TOOLKIT
+            VIEW TECHNICAL PROFILE
           </Link>
 
           {/* Secondary: contact */}

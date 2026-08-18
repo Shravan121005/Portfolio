@@ -113,16 +113,16 @@ export default function Profile() {
           TECH-PROFILE-01
         </div>
 
+        <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase tracking-tight">
+          TECHNICAL PROFILE<span className="blinking-cursor" />
+        </h1>
+
         {/* Boot-style prefix lines */}
         <div className="font-label-sm text-[10px] text-outline tracking-widest mb-3 space-y-0.5">
           <div><span className="text-tertiary-fixed-dim">&gt; </span>ENGINEERING PROFILE</div>
           <div><span className="text-outline">&gt; </span>ANALYZING TECHNICAL CAPABILITIES...</div>
           <div><span className="text-tertiary-fixed-dim">&gt; </span>CLASSIFICATION: DEVELOPER // CLEARANCE: LEVEL-5</div>
         </div>
-
-        <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary uppercase tracking-tight">
-          PROFILE<span className="blinking-cursor" />
-        </h1>
         <p className="font-body-md text-on-surface-variant mt-2">
           REF: TECH-PROFILE-01 // TECHNICAL CAPABILITIES &amp; ENGINEERING PROFILE
         </p>

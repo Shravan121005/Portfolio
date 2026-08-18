@@ -81,9 +81,9 @@ function Stamp({
         prefersReducedMotion
           ? { duration: 0 }
           : {
-              duration: 0.22,
-              ease: [0.175, 0.885, 0.32, 1.275],
-            }
+            duration: 0.22,
+            ease: [0.175, 0.885, 0.32, 1.275],
+          }
       }
     >
       {text}
@@ -303,14 +303,14 @@ export default function Achievements() {
         />
       </section>
 
-      {/* ── RIGHT COL: FIELD OPERATIONS ── */}
+      {/* ── RIGHT COL: Acheivements ── */}
       <section className="md:col-span-5 space-y-6">
         <AnimatedCard className="flex items-center gap-2 mb-4 border-b border-outline pb-2" variant="slideLeft">
           <span className="material-symbols-outlined text-primary-container">
             radar
           </span>
           <h2 className="font-headline-md text-headline-md text-primary-container">
-            FIELD OPERATIONS
+            ACHIEVEMENTS
           </h2>
         </AnimatedCard>
 

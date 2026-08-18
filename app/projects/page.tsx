@@ -343,7 +343,7 @@ export default function Projects() {
         }
       >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-3">
-          <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary uppercase tracking-tight">
+          <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase tracking-tight">
             <span className="blinking-cursor">TECHNICAL PROJECTS</span>
           </h1>
           <span className="font-label-sm text-on-surface-variant opacity-70 shrink-0">
