@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import DocumentModal from "./DocumentModal";
 
 const navItems = [
   { name: "SUBJECT", href: "/" },
@@ -23,11 +24,10 @@ const CONTACT_LINKS = {
 export default function NavBar() {
   const pathname = usePathname();
 
-  // --------------------------------------------------
-  // ACCESS PILL
-  // Shared by desktop + mobile.
-  // Starts OPEN by default.
-  // --------------------------------------------------
+  // ── Document selector modal ──
+  const [isDocModalOpen, setIsDocModalOpen] = useState(false);
+
+  // ── Access Pill (desktop left pill / mobile bottom dock) ──
   const [isAccessOpen, setIsAccessOpen] = useState(true);
 
   const toggleAccess = () => {
@@ -434,13 +434,13 @@ export default function NavBar() {
             <div className="w-2 h-2 rounded-full bg-primary-container status-pulse hidden md:block mb-1" />
 
             {/* ------------------------------------------------
-                RESUME
+                RESUME — opens document selector modal
                 ------------------------------------------------ */}
 
-            <motion.a
-              href={CONTACT_LINKS.resume}
-              download
-              title="Download Resume"
+            <motion.button
+              onClick={() => setIsDocModalOpen(true)}
+              title="Select Document"
+              aria-label="Open document selector"
               className="
                 w-10 h-10
                 rounded-full
@@ -460,7 +460,7 @@ export default function NavBar() {
               <span className="material-symbols-outlined text-[18px]">
                 picture_as_pdf
               </span>
-            </motion.a>
+            </motion.button>
 
             <div className="h-6 w-[1px] md:w-full md:h-[1px] bg-outline-variant/50" />
 
@@ -593,6 +593,11 @@ export default function NavBar() {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* ── Document Selector Modal ── */}
+      <DocumentModal
+        isOpen={isDocModalOpen}
+        onClose={() => setIsDocModalOpen(false)}
+      />
     </>
   );
 }
