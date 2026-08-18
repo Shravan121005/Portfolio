@@ -424,7 +424,7 @@ export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
                     <div className="inline-flex items-center gap-1.5 mb-3 px-2 py-1 bg-primary-container/20 border border-primary-container/40">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary-container status-pulse" />
                       <span className="font-label-sm text-[9px] text-primary tracking-[0.2em]">
-                        RECRUITER &amp; CREDENTIALS HUB
+                        RESUME &amp; CREDENTIALS
                       </span>
                     </div>
 
@@ -434,7 +434,7 @@ export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
                           SELECT DOCUMENT
                         </h2>
                         <p className="font-label-sm text-[11px] text-outline mt-1 tracking-wider">
-                          REF: DOC-VAULT-01 // {DOCUMENTS.length} DOCUMENT
+                          REF: RECORD-01 // {DOCUMENTS.length} DOCUMENT
                           {DOCUMENTS.length !== 1 ? "S" : ""} AVAILABLE
                         </p>
                       </div>
@@ -465,7 +465,7 @@ export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
                   {/* Modal footer */}
                   <div className="px-5 py-3 border-t border-outline-variant border-dashed shrink-0">
                     <p className="font-label-sm text-[9px] text-outline tracking-widest text-center">
-                      SHRAVAN SHASHI JAIN // CASE FILE: SJ-89-X // DOCUMENTS CLEARED FOR REVIEW
+                      SHRAVAN SHASHI JAIN // PROFILE ID: SJ-89-X // ENGINEERING CREDENTIALS VERIFIED
                     </p>
                   </div>
                 </div>

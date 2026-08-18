@@ -109,7 +109,7 @@ export default function Coding() {
         transition={transitionBase}
       >
         <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2 uppercase tracking-tight glitch-hover inline-block">
-          NETWORK INTEL: CODING PROFILES
+          CODING &amp; ALGORITHMIC PROFILES
         </h1>
 
         <div className="flex flex-wrap items-center gap-2 md:gap-4 text-tertiary-fixed-dim font-label-md text-label-md">
@@ -386,10 +386,10 @@ export default function Coding() {
           >
             <div className="absolute -left-2 top-1/2 w-4 h-4 bg-background rounded-full border border-outline-variant transform -translate-y-1/2" />
             <span className="font-label-md text-label-md font-bold uppercase block">
-              TAG_ID: 88 // CLASSIFIED
+              TAG_ID: 88 // VERIFIED
             </span>
             <span className="font-body-md text-body-md text-sm uppercase block mt-1 opacity-80">
-              Subject demonstrates consistent algorithmic threat capability.
+              Consistent algorithmic problem-solving capability.
               Monitor closely.
             </span>
           </motion.div>

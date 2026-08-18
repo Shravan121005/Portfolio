@@ -44,7 +44,7 @@ const projects = [
   {
     id: "deepguard",
     exhibitNo: "01",
-    caseNo: "CASE_NO: 001",
+    caseNo: "PROJECT ID: 001",
     title: "DEEPGUARD AI",
     subtitle: "AI-generated image detection system",
     icon: "image_search",
@@ -65,7 +65,7 @@ const projects = [
   {
     id: "buginsight",
     exhibitNo: "02",
-    caseNo: "CASE_NO: 002",
+    caseNo: "PROJECT ID: 002",
     title: "BUGINSIGHT",
     subtitle: "Issue severity & resolution prediction pipeline",
     icon: "bug_report",
@@ -86,7 +86,7 @@ const projects = [
   {
     id: "smartdiet",
     exhibitNo: "03",
-    caseNo: "CASE_NO: 003",
+    caseNo: "PROJECT ID: 003",
     title: "SMARTDIET AI",
     subtitle: "Nutrition recommendation & calorie prediction",
     icon: "restaurant",
@@ -107,7 +107,7 @@ const projects = [
   {
     id: "oilwell",
     exhibitNo: "04",
-    caseNo: "CASE_NO: 004",
+    caseNo: "PROJECT ID: 004",
     title: "OIL WELL CHOKE",
     subtitle: "Autonomous choke control — Honeywell AI Hackathon",
     icon: "oil_barrel",
@@ -144,14 +144,14 @@ function ExhibitTab({
     <button
       onClick={onClick}
       className={`exhibit-tab px-3 py-2 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-primary${isActive ? " active" : ""}`}
-      aria-label={`View Exhibit ${exhibitNo}: ${title}`}
+      aria-label={`View Project ${exhibitNo}: ${title}`}
       aria-pressed={isActive}
     >
       <span
         className="font-label-sm text-[10px] tracking-widest"
         style={{ color: isActive ? "#ffd700" : "#4d4732" }}
       >
-        EXH {exhibitNo}
+        PROJ {exhibitNo}
       </span>
       <span
         className="font-label-md text-[11px] truncate max-w-[120px] sm:max-w-none"
@@ -197,7 +197,7 @@ function ExhibitCard({
           </span>
           <div className="min-w-0">
             <div className="font-label-sm text-[10px] text-outline tracking-widest mb-1">
-              CASE STUDY / EXHIBIT {project.exhibitNo} / 04 &nbsp;·&nbsp; {project.caseNo}
+              CASE STUDY / PROJECT {project.exhibitNo} / 04 &nbsp;·&nbsp; {project.caseNo}
             </div>
             <h2 className="font-headline-lg-mobile md:font-headline-md text-primary uppercase tracking-tight leading-tight">
               {project.title}
@@ -344,10 +344,10 @@ export default function Projects() {
       >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-3">
           <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary uppercase tracking-tight">
-            <span className="blinking-cursor">EVIDENCE LOG: TECHNICAL PROJECTS</span>
+            <span className="blinking-cursor">TECHNICAL PROJECTS</span>
           </h1>
           <span className="font-label-sm text-on-surface-variant opacity-70 shrink-0">
-            REF: DOC-77A // EXH. 01-04
+            REF: DOC-77A // PROJ. 01-04
           </span>
         </div>
 
@@ -358,19 +358,19 @@ export default function Projects() {
           <br />
           <span className="text-tertiary-fixed-dim">&gt; </span>
           <span className="text-tertiary-fixed-dim/80">
-            WARNING: CONTENTS MAY CONTAIN HIGHLY CLASSIFIED ALGORITHMS.
+            NOTE: CONTENTS DETAIL SYSTEMS ARCHITECTURE AND ML PIPELINES.
           </span>
         </div>
       </motion.header>
 
-      {/* ── Exhibit navigator tabs ── */}
+      {/* ── Project navigator tabs ── */}
       <div className="mb-6">
         {/* Tab row — scroll on very small screens, no overflow on normal */}
         <div
           className="flex gap-2 overflow-x-auto pb-1"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           role="tablist"
-          aria-label="Project exhibits"
+          aria-label="Projects"
         >
           {projects.map((p, idx) => (
             <ExhibitTab
@@ -400,7 +400,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* ── Featured exhibit ── */}
+      {/* ── Featured project ── */}
       <AnimatePresence mode="wait">
         <ExhibitCard
           key={activeProject.id}
@@ -415,10 +415,10 @@ export default function Projects() {
           onClick={() => setActiveIdx((i) => Math.max(0, i - 1))}
           disabled={activeIdx === 0}
           className="exhibit-tab px-4 py-2 flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
-          aria-label="Previous exhibit"
+          aria-label="Previous project"
         >
           <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-          <span>PREV EXHIBIT</span>
+          <span>PREV PROJECT</span>
         </button>
 
         {/* Dot indicators */}
@@ -428,7 +428,7 @@ export default function Projects() {
               key={idx}
               onClick={() => setActiveIdx(idx)}
               className="focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
-              aria-label={`Go to exhibit ${idx + 1}`}
+              aria-label={`Go to project ${idx + 1}`}
             >
               <motion.div
                 className="w-2 h-2 rounded-full"
@@ -446,9 +446,9 @@ export default function Projects() {
           onClick={() => setActiveIdx((i) => Math.min(projects.length - 1, i + 1))}
           disabled={activeIdx === projects.length - 1}
           className="exhibit-tab px-4 py-2 flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
-          aria-label="Next exhibit"
+          aria-label="Next project"
         >
-          <span>NEXT EXHIBIT</span>
+          <span>NEXT PROJECT</span>
           <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
         </button>
       </div>

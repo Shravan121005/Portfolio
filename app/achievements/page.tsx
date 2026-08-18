@@ -127,7 +127,7 @@ function CredentialDoc({
       >
         {/* Doc ID corner tag */}
         <div className="absolute top-2 right-3 text-on-surface-variant font-label-sm text-[10px] tracking-widest">
-          DOC_ID: {docId}
+          RECORD NO: {docId}
         </div>
 
         {/* Tape decoration */}
@@ -215,7 +215,7 @@ export default function Achievements() {
         }
       >
         <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
-          DOSSIER: CREDENTIALS &amp; FIELD RECORDS
+          CREDENTIALS &amp; ACHIEVEMENTS
           <span className="blinking-cursor" />
         </h1>
 
@@ -225,7 +225,7 @@ export default function Achievements() {
 
         {/* Header stamp */}
         <div className="sm:absolute sm:top-0 sm:right-0 mt-4 sm:mt-0 flex justify-start sm:justify-end">
-          <Stamp text="APPROVED" colorClass="border-[#c31e00] text-[#c31e00]" />
+          <Stamp text="VERIFIED" colorClass="border-[#c31e00] text-[#c31e00]" />
         </div>
       </motion.header>
 
@@ -236,7 +236,7 @@ export default function Achievements() {
             military_tech
           </span>
           <h2 className="font-headline-md text-headline-md text-primary-container">
-            VERIFIED CREDENTIALS
+            CERTIFICATIONS
           </h2>
         </AnimatedCard>
 

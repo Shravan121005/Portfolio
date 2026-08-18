@@ -7,11 +7,10 @@ export default function Footer() {
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2">
         <div className="w-2 h-2 rounded-full bg-primary-container status-pulse shrink-0" />
         <div>
-          <div className="font-label-sm text-label-sm uppercase opacity-50 text-on-surface-variant">
-            © 2005–2026 VIT BUREAU OF INVESTIGATION
-          </div>
-          <div className="font-label-sm text-[10px] text-outline opacity-40 tracking-widest mt-0.5">
-            CASE_FILE: SHRAVAN_JAIN // CLEARANCE: LEVEL-5
+          <div className="font-label-sm text-[10px] text-on-surface-variant flex flex-col md:flex-row md:gap-4">
+            <span>© 2005–2026 VIT BHOPAL // COMPUTER SCIENCE</span>
+            <span className="hidden md:inline text-outline-variant">|</span>
+            <span>SHRAVAN_JAIN // ENGINEERING PROFILE</span>
           </div>
         </div>
       </div>
@@ -41,8 +40,9 @@ export default function Footer() {
           CONTACT
         </a>
         <div className="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 cursor-default opacity-40">
-          <span className="material-symbols-outlined text-[14px]">lock</span>
-          SIGNAL_ENCRYPTED
+          <span className="font-label-sm text-[10px] text-primary tracking-widest">
+            SYSTEM ONLINE
+          </span>
         </div>
       </div>
     </footer>

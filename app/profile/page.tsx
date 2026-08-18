@@ -110,13 +110,13 @@ export default function Profile() {
       >
         {/* Corner doc tag */}
         <div className="absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-sm px-3 py-1 border-l border-b border-[#333]">
-          TECH-DOC-01
+          TECH-PROFILE-01
         </div>
 
         {/* Boot-style prefix lines */}
         <div className="font-label-sm text-[10px] text-outline tracking-widest mb-3 space-y-0.5">
-          <div><span className="text-tertiary-fixed-dim">&gt; </span>SUBJECT TECHNICAL PROFILE</div>
-          <div><span className="text-outline">&gt; </span>ANALYZING ENGINEERING CAPABILITIES...</div>
+          <div><span className="text-tertiary-fixed-dim">&gt; </span>ENGINEERING PROFILE</div>
+          <div><span className="text-outline">&gt; </span>ANALYZING TECHNICAL CAPABILITIES...</div>
           <div><span className="text-tertiary-fixed-dim">&gt; </span>CLASSIFICATION: DEVELOPER // CLEARANCE: LEVEL-5</div>
         </div>
 
@@ -124,7 +124,7 @@ export default function Profile() {
           PROFILE<span className="blinking-cursor" />
         </h1>
         <p className="font-body-md text-on-surface-variant mt-2">
-          REF: TECH-DOC-01 // TECHNICAL CAPABILITIES &amp; ENGINEERING PROFILE
+          REF: TECH-PROFILE-01 // TECHNICAL CAPABILITIES &amp; ENGINEERING PROFILE
         </p>
       </motion.header>
 
@@ -133,7 +133,7 @@ export default function Profile() {
         <div className="dossier-card p-dossier-padding">
           {/* Card label */}
           <div className="absolute top-0 right-0 bg-surface-container text-outline font-label-sm text-[10px] px-3 py-1 border-l border-b border-[#333] tracking-widest">
-            ASSESSMENT: ALPHA-1
+            EVALUATION: COMPLETE
           </div>
 
           <h2 className="font-headline-md text-headline-md text-primary mb-6 border-b border-outline pb-3 flex items-center gap-3">
@@ -147,15 +147,15 @@ export default function Profile() {
             {/* Main statement */}
             <div className="lg:col-span-2 bg-surface-container-lowest p-4 border border-outline-variant">
               <p className="font-body-md text-on-surface-variant leading-relaxed mb-4">
-                Subject is a Machine Learning engineer and full-stack developer with a
+                Machine Learning engineer and full-stack developer with a
                 demonstrated focus on building practical, deployable systems. Primary
                 interest lies at the intersection of data-driven modelling and
                 software engineering — designing end-to-end pipelines that move from
                 raw data through inference to production.
               </p>
               <p className="font-body-md text-on-surface-variant leading-relaxed">
-                WARNING: Subject approaches problems analytically, experimentally, and
-                iteratively. Known to favour systems that are measurable, reproducible,
+                Approaches problems analytically, experimentally, and
+                iteratively. Focused on systems that are measurable, reproducible,
                 and honest in their limitations.
               </p>
             </div>
@@ -218,7 +218,7 @@ export default function Profile() {
                 <span className="material-symbols-outlined text-[18px]">
                   arrow_forward
                 </span>
-                VIEW CODING INTEL
+                VIEW CODING PROFILE
               </Link>
             </div>
 
@@ -331,7 +331,7 @@ export default function Profile() {
         <div className="border-t border-outline-variant pt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <div>
             <div className="font-label-sm text-[10px] text-outline tracking-widest mb-1">
-              FURTHER INVESTIGATION
+              EXPLORE FURTHER
             </div>
             <p className="font-body-md text-on-surface-variant text-sm">
               View deployed projects or coding profiles for concrete evidence.
@@ -343,14 +343,14 @@ export default function Profile() {
               className="exhibit-tab px-4 py-2.5 flex items-center gap-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
             >
               <span className="material-symbols-outlined text-[14px]">folder_open</span>
-              ACCESS EVIDENCE
+              VIEW PROJECTS
             </Link>
             <Link
               href="/coding"
               className="exhibit-tab px-4 py-2.5 flex items-center gap-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
             >
               <span className="material-symbols-outlined text-[14px]">code</span>
-              VIEW INTEL
+              VIEW CODING PROFILE
             </Link>
           </div>
         </div>

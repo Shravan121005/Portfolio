@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const BOOT_MESSAGES = [
   "ESTABLISHING SECURE CONNECTION...",
-  "AUTHENTICATING SUBJECT: SHRAVAN_JAIN...",
+  "INITIALIZING PROFILE: SHRAVAN_JAIN...",
   "DECRYPTING CASE FILE...",
   "ACCESS GRANTED.",
 ];
@@ -86,7 +86,7 @@ export default function BootSequence() {
       <div className="w-full max-w-xl relative z-10">
         {/* Header line */}
         <div className="font-label-sm text-label-sm text-[#e9c400] opacity-60 mb-6 tracking-[0.3em]">
-          SYS :: CASE_FILE_ACCESS_PROTOCOL v2.4.1
+          SYS :: ENGINEERING_PORTFOLIO_ACCESS v2.4.1
         </div>
 
         {/* Messages */}

@@ -66,11 +66,11 @@ export default function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="w-full h-80 object-contain border-b-4 border-r-4 border-surface-container-lowest filter grayscale contrast-125 mb-4"
-            alt="A gritty, high-contrast black and white polaroid photograph of a male software engineer, intense expression, stark lighting casting heavy shadows."
+            alt="A professional high-contrast black and white photograph of a male software engineer."
             src="/profile.png"
           />
           <div className="font-label-md text-label-md text-on-surface-variant flex justify-between border-b border-outline-variant pb-2">
-            <span>ID: SJ-89-X</span>
+            <span>RECORD NO: SJ-89-X</span>
             <span className="text-error font-bold blinking-cursor">
               STATUS: ACTIVE
             </span>
@@ -96,10 +96,10 @@ export default function Home() {
           transition={transitionBase}
         >
           <div className="absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-sm px-3 py-1 border-l border-b border-[#333333]">
-            DOC NO. 04A
+            PROFILE ID: 04A
           </div>
           <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary mb-6 border-b-2 border-outline pb-4 flex items-center justify-between">
-            <span>SUBJECT OVERVIEW</span>
+            <span>PROFESSIONAL OVERVIEW</span>
             <span className="material-symbols-outlined text-4xl opacity-50">
               badge
             </span>
@@ -116,7 +116,7 @@ export default function Home() {
               transition={{ ...transitionBase, duration: 0.3 }}
             >
               <div className="font-label-sm text-label-sm text-primary opacity-70 mb-1">
-                ALIAS / NAME
+                NAME
               </div>
               <div className="font-bold text-on-surface uppercase">
                 Shravan Shashi Jain
@@ -129,7 +129,7 @@ export default function Home() {
               transition={{ ...transitionBase, duration: 0.3 }}
             >
               <div className="font-label-sm text-label-sm text-primary opacity-70 mb-1">
-                PRIMARY LOCATION
+                EDUCATION
               </div>
               <div className="font-bold text-on-surface uppercase">
                 Vellore Institute of Technology
@@ -142,7 +142,7 @@ export default function Home() {
               transition={{ ...transitionBase, duration: 0.3 }}
             >
               <div className="font-label-sm text-label-sm text-primary opacity-70 mb-1">
-                KNOWN ASSOCIATIONS
+                SPECIALIZATION
               </div>
               <div className="font-bold text-on-surface w-full text-[11px] sm:text-sm md:text-base md:typewriter-text">
                 MACHINE_LEARNING_ENGINEER // FULL_STACK_DEV
@@ -153,16 +153,10 @@ export default function Home() {
           {/* Description */}
           <div className="bg-surface-container-lowest p-4 border border-outline-variant text-body-md font-body-md">
             <p className="mb-4">
-              Subject demonstrates a strong passion for problem-solving, with a
-              particular interest in Machine Learning and full-stack software
-              development. Driven by curiosity, analytical thinking, and a
-              constant desire to build better solutions from complex problems.
+              Focused on building practical software systems and machine learning solutions, driven by analytical thinking and a desire to solve complex problems through code.
             </p>
             <p>
-              WARNING: Subject is highly engaged in learning, experimenting, and
-              engineering scalable systems. Known to approach difficult problems
-              with persistence, explore ideas beyond the obvious solution, and
-              continuously improve through hands-on development.
+              Committed to continuous learning, experimentation, and engineering scalable systems. Approach difficult problems with persistence, explore ideas beyond the obvious solution, and continuously improve through hands-on development.
             </p>
           </div>
         </motion.div>
@@ -174,10 +168,10 @@ export default function Home() {
           transition={{ ...transitionBase, delay: 0.1 }}
         >
           <div className="hidden md:flex absolute -left-12 top-[68px] w-24 h-6 bg-secondary-container text-on-secondary-container font-label-sm items-center justify-center rotate-[-90deg] border border-[#333333] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] z-10">
-            EVIDENCE
+            PROJECTS
           </div>
           <h2 className="font-headline-md text-headline-md text-primary mb-6 md:ml-6 border-b border-outline pb-2">
-            OPERATIONAL CAPABILITIES
+            TECHNICAL CAPABILITIES
           </h2>
 
           <motion.div
@@ -189,7 +183,7 @@ export default function Home() {
           >
             {[
               { icon: "memory", label: "PROBLEM SOLVING / DSA" },
-              { icon: "code", label: "WEB TECHNOLOGIES" },
+              { icon: "code", label: "FULL-STACK DEVELOPMENT" },
               { icon: "database", label: "SYSTEMS & DEPLOYMENT" },
               { icon: "rocket_launch", label: "MACHINE LEARNING" },
             ].map(({ icon, label }) => (
@@ -229,7 +223,7 @@ export default function Home() {
             <span className="material-symbols-outlined text-[18px]">
               manage_accounts
             </span>
-            ACCESS TECHNICAL PROFILE
+            VIEW ENGINEERING TOOLKIT
           </Link>
 
           {/* Secondary: contact */}
@@ -238,7 +232,7 @@ export default function Home() {
             className="bg-surface-container text-on-surface font-label-md text-label-md px-6 py-3 border-2 border-outline shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] btn-sweep flex items-center justify-center gap-2 cursor-pointer w-full sm:w-auto text-center hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150"
           >
             <span className="material-symbols-outlined text-[18px]">mail</span>
-            CONTACT SUBJECT
+            GET IN TOUCH
           </a>
         </motion.div>
       </motion.div>

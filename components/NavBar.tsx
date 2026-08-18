@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from "motion/react";
 import DocumentModal from "./DocumentModal";
 
 const navItems = [
-  { name: "SUBJECT", href: "/" },
+  { name: "ABOUT", href: "/" },
   { name: "PROFILE", href: "/profile" },
-  { name: "EVIDENCE", href: "/projects" },
-  { name: "INTEL", href: "/coding" },
-  { name: "DOSSIER", href: "/achievements" },
+  { name: "PROJECTS", href: "/projects" },
+  { name: "CODING", href: "/coding" },
+  { name: "ACHIEVEMENTS", href: "/achievements" },
 ];
 
 const CONTACT_LINKS = {
@@ -101,7 +101,7 @@ export default function NavBar() {
             md:text-label-md
           "
         >
-          CASE_FILE: SHRAVAN_JAIN
+          SHRAVAN_JAIN // PROFILE
         </Link>
 
         {/* --------------------------------------------------
@@ -147,10 +147,10 @@ export default function NavBar() {
 
         <div className="flex items-center gap-2 md:gap-4">
 
-          {/* CLASSIFIED BADGE */}
+          {/* VERIFIED BADGE */}
 
           <div className="hidden sm:block font-label-sm text-label-sm px-2 py-1 bg-error/20 text-error border border-error">
-            CLASSIFIED
+            VERIFIED
           </div>
 
           {/* ------------------------------------------------
@@ -162,8 +162,8 @@ export default function NavBar() {
             <button
               onClick={toggleAccess}
               className="material-symbols-outlined text-primary cursor-pointer hover:text-tertiary-container p-1 focus:outline-none transition-colors"
-              title="Toggle Subject Access"
-              aria-label="Toggle subject access panel"
+              title="Toggle Quick Access"
+              aria-label="Toggle quick access panel"
             >
               {isAccessOpen ? "close" : "menu"}
             </button>
@@ -173,7 +173,7 @@ export default function NavBar() {
               MOBILE CONTROLS
               EXACTLY TWO BUTTONS
               
-              1. + / × = Subject Access
+              1. + / × = Quick Access
               2. ☰ / × = Page Navigation
               ================================================== */}
 
@@ -204,7 +204,7 @@ export default function NavBar() {
                 focus-visible:ring-primary
                 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
               "
-              title="Toggle Subject Access"
+              title="Toggle Quick Access"
             >
               <span
                 className="
@@ -353,7 +353,7 @@ export default function NavBar() {
       </nav>
 
       {/* ==================================================
-          SUBJECT ACCESS PILL
+          QUICK ACCESS PILL
           
           Desktop:
           Fixed left side, vertically centered.
@@ -548,7 +548,7 @@ export default function NavBar() {
 
             <motion.a
               href={CONTACT_LINKS.email}
-              title="Contact Subject"
+              title="Contact Me"
               className="
                 w-10 h-10
                 rounded-full
