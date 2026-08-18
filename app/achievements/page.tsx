@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, useInView, Variants } from "motion/react";
 import { useRef } from "react";
+import Link from "next/link";
 
 // ── Variants ──────────────────────────────────────────────────────────────────
 
@@ -68,25 +69,126 @@ function Stamp({
   return (
     <motion.div
       ref={ref}
-      className={`font-headline-md text-xl border-2 px-2 py-0.5 inline-block ${colorClass}`}
+      className={`font-headline-md text-xl border-2 px-2 py-0.5 inline-block select-none ${colorClass}`}
       style={{ borderRadius: 4, transform: "rotate(-15deg)" }}
-      initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.4 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.8 }}
       animate={
         inView
           ? { opacity: 0.85, scale: 1 }
-          : { opacity: 0, scale: 1.4 }
+          : { opacity: 0, scale: 1.8 }
       }
       transition={
         prefersReducedMotion
           ? { duration: 0 }
           : {
-              duration: 0.2,
+              duration: 0.22,
               ease: [0.175, 0.885, 0.32, 1.275],
             }
       }
     >
       {text}
     </motion.div>
+  );
+}
+
+// ── Credential document component ────────────────────────────────────────────
+
+function CredentialDoc({
+  docId,
+  title,
+  description,
+  issuer,
+  issued,
+  credentialId,
+  stampText,
+  stampColorClass,
+  rotation,
+  delay,
+  iconName,
+  iconColor,
+}: {
+  docId: string;
+  title: string;
+  description: string;
+  issuer: string;
+  issued: string;
+  credentialId?: string;
+  stampText: string;
+  stampColorClass: string;
+  rotation?: string;
+  delay?: number;
+  iconName: string;
+  iconColor: string;
+}) {
+  return (
+    <AnimatedCard delay={delay}>
+      <article
+        className={`credential-doc p-dossier-padding relative transition-transform duration-300 hover:rotate-0 ${rotation ?? ""}`}
+      >
+        {/* Doc ID corner tag */}
+        <div className="absolute top-2 right-3 text-on-surface-variant font-label-sm text-[10px] tracking-widest">
+          DOC_ID: {docId}
+        </div>
+
+        {/* Tape decoration */}
+        {docId === "001" && (
+          <div className="tape absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 rotate-2 z-10" />
+        )}
+        {docId === "002" && (
+          <div className="tape absolute -top-2 left-8 w-12 h-5 -rotate-3 z-10" />
+        )}
+        {docId === "004" && (
+          <div className="tape absolute -top-2 right-12 w-12 h-5 rotate-3 z-10" />
+        )}
+
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
+          <div
+            className="w-14 h-14 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0"
+          >
+            <span
+              className="material-symbols-outlined text-3xl"
+              style={{ color: iconColor, fontVariationSettings: "'FILL' 1" }}
+            >
+              {iconName}
+            </span>
+          </div>
+          <div>
+            <h3 className="font-label-md text-primary text-lg leading-snug mb-1">
+              {title}
+            </h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
+              {description}
+            </p>
+          </div>
+        </div>
+
+        {/* Meta row */}
+        <div className="grid grid-cols-2 gap-4 font-label-sm text-[11px] text-on-surface-variant mb-1">
+          <div>
+            <span className="text-outline">ISSUER: </span>
+            {issuer}
+          </div>
+          <div>
+            <span className="text-outline">ISSUED: </span>
+            {issued}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-5 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
+          <Stamp text={stampText} colorClass={stampColorClass} />
+          <div className="text-right">
+            <div className="font-label-sm text-[10px] text-outline mb-1">
+              {credentialId ? "CREDENTIAL ID" : "CREDENTIAL STATUS"}
+            </div>
+            <div className="font-label-sm text-[11px] text-primary truncate max-w-[200px]">
+              {credentialId ?? "ACTIVE"}
+            </div>
+          </div>
+        </div>
+      </article>
+    </AnimatedCard>
   );
 }
 
@@ -103,7 +205,7 @@ export default function Achievements() {
       {/* ── PAGE HEADER ── */}
       <motion.header
         ref={headerRef}
-        className="md:col-span-12 mb-8 border-b border-outline-variant pb-4 relative"
+        className="md:col-span-12 mb-8 border-b border-outline-variant pb-4 relative scan-sweep"
         initial={prefersReducedMotion ? false : { opacity: 0, y: -12 }}
         animate={headerInView ? { opacity: 1, y: 0 } : {}}
         transition={
@@ -113,12 +215,12 @@ export default function Achievements() {
         }
       >
         <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
-          Milestones &amp; Achievements
+          DOSSIER: CREDENTIALS &amp; FIELD RECORDS
           <span className="blinking-cursor" />
         </h1>
 
         <p className="font-body-lg text-body-lg text-on-surface-variant mt-2">
-          REF: SEC-994-ACT // COMMENDATIONS &amp; FIELD RECORDS
+          REF: SEC-994-ACT // COMMENDATIONS &amp; VERIFIED RECORDS
         </p>
 
         {/* Header stamp */}
@@ -127,281 +229,81 @@ export default function Achievements() {
         </div>
       </motion.header>
 
-      {/* ── OFFICIAL COMMENDATIONS ── */}
+      {/* ── LEFT COL: CREDENTIALS ── */}
       <section className="md:col-span-7 space-y-8">
         <AnimatedCard className="flex items-center gap-2 mb-4 border-b border-outline pb-2">
           <span className="material-symbols-outlined text-primary-container">
             military_tech
           </span>
           <h2 className="font-headline-md text-headline-md text-primary-container">
-            OFFICIAL COMMENDATIONS
+            VERIFIED CREDENTIALS
           </h2>
         </AnimatedCard>
 
-        {/* ── ORACLE ── */}
-        <AnimatedCard delay={0.05}>
-          <article className="dossier-card p-dossier-padding md:rotate-1 relative transition-transform hover:rotate-0 duration-300">
-            <div className="tape absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 rotate-2 z-10" />
-            <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
-              DOC_ID: 001
-            </div>
+        {/* Kaggle ML */}
+        <CredentialDoc
+          docId="001"
+          title="Intermediate Machine Learning"
+          description="Practical Machine Learning certification covering supervised learning, model evaluation, feature engineering and applied ML workflows."
+          issuer="KAGGLE"
+          issued="JUL 2026"
+          stampText="VERIFIED"
+          stampColorClass="border-tertiary-container text-tertiary-container"
+          rotation="md:rotate-1"
+          delay={0.05}
+          iconName="psychology"
+          iconColor="var(--color-secondary)"
+        />
 
-            <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-              <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-                <span
-                  className="material-symbols-outlined text-tertiary-container text-4xl"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  verified
-                </span>
-              </div>
-              <div>
-                <h3 className="font-label-md text-primary text-xl mb-1">
-                  Oracle Certified Associate, Oracle WebLogic Server 11g System
-                  Administrator
-                </h3>
-                <p className="font-body-md text-on-surface-variant">
-                  Professional certification covering Oracle WebLogic Server
-                  administration and enterprise application server management.
-                </p>
-              </div>
-            </div>
+        {/* Google Networking */}
+        <CredentialDoc
+          docId="002"
+          title="The Bits and Bytes of Computer Networking"
+          description="Certification covering core computer networking concepts, protocols, and communication fundamentals."
+          issuer="GOOGLE (COURSERA)"
+          issued="NOV 2025"
+          credentialId="D7SRMMHRJYJM"
+          stampText="CLEARED"
+          stampColorClass="border-secondary text-secondary"
+          rotation="md:-rotate-1"
+          delay={0.1}
+          iconName="lan"
+          iconColor="var(--color-secondary)"
+        />
 
-            <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-              <div>
-                <span className="text-outline">ISSUER:</span> ORACLE
-              </div>
-              <div>
-                <span className="text-outline">ISSUED:</span> JUL 2026
-              </div>
-            </div>
+        {/* IBM ML */}
+        <CredentialDoc
+          docId="003"
+          title="Machine Learning for Data Science"
+          description="Certification focused on Machine Learning methods and their application to practical Data Science workflows."
+          issuer="IBM"
+          issued="JUL 2026"
+          stampText="VERIFIED"
+          stampColorClass="border-tertiary-container text-tertiary-container"
+          rotation="md:rotate-1"
+          delay={0.15}
+          iconName="model_training"
+          iconColor="var(--color-primary-container)"
+        />
 
-            <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-              <Stamp
-                text="VERIFIED"
-                colorClass="border-tertiary-container text-tertiary-container"
-              />
-              <div className="text-right">
-                <div className="font-label-sm text-outline mb-1">
-                  CREDENTIAL STATUS
-                </div>
-                <div className="font-label-sm text-primary">ACTIVE</div>
-              </div>
-            </div>
-          </article>
-        </AnimatedCard>
-
-        {/* ── KAGGLE ── */}
-        <AnimatedCard delay={0.1}>
-          <article className="dossier-card p-dossier-padding md:-rotate-1 relative transition-transform hover:rotate-0 duration-300">
-            <div className="tape absolute -top-2 left-8 w-12 h-5 -rotate-3 z-10" />
-            <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
-              DOC_ID: 002
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-              <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-                <span
-                  className="material-symbols-outlined text-secondary text-4xl"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  psychology
-                </span>
-              </div>
-              <div>
-                <h3 className="font-label-md text-primary text-xl mb-1">
-                  Intermediate Machine Learning
-                </h3>
-                <p className="font-body-md text-on-surface-variant">
-                  Practical Machine Learning certification covering supervised
-                  learning, model evaluation, and applied ML workflows.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-              <div>
-                <span className="text-outline">ISSUER:</span> KAGGLE
-              </div>
-              <div>
-                <span className="text-outline">ISSUED:</span> JUL 2026
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-              <Stamp
-                text="CLEARED"
-                colorClass="border-secondary text-secondary"
-              />
-              <div className="text-right">
-                <div className="font-label-sm text-outline mb-1">
-                  CREDENTIAL STATUS
-                </div>
-                <div className="font-label-sm text-primary">ACTIVE</div>
-              </div>
-            </div>
-          </article>
-        </AnimatedCard>
-
-        {/* ── IBM ── */}
-        <AnimatedCard delay={0.15}>
-          <article className="dossier-card p-dossier-padding md:rotate-1 relative transition-transform hover:rotate-0 duration-300">
-            <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
-              DOC_ID: 003
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-              <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-                <span
-                  className="material-symbols-outlined text-primary-container text-4xl"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  model_training
-                </span>
-              </div>
-              <div>
-                <h3 className="font-label-md text-primary text-xl mb-1">
-                  Machine Learning for Data Science
-                </h3>
-                <p className="font-body-md text-on-surface-variant">
-                  Certification focused on Machine Learning methods and their
-                  application to practical Data Science workflows.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-              <div>
-                <span className="text-outline">ISSUER:</span> IBM
-              </div>
-              <div>
-                <span className="text-outline">ISSUED:</span> JUL 2026
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-              <Stamp
-                text="VERIFIED"
-                colorClass="border-tertiary-container text-tertiary-container"
-              />
-              <div className="text-right">
-                <div className="font-label-sm text-outline mb-1">
-                  CREDENTIAL STATUS
-                </div>
-                <div className="font-label-sm text-primary">ACTIVE</div>
-              </div>
-            </div>
-          </article>
-        </AnimatedCard>
-
-        {/* ── NETWORKING ── */}
-        <AnimatedCard delay={0.2}>
-          <article className="dossier-card p-dossier-padding md:-rotate-1 relative transition-transform hover:rotate-0 duration-300">
-            <div className="tape absolute -top-2 right-12 w-12 h-5 rotate-3 z-10" />
-            <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
-              DOC_ID: 004
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-              <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-                <span
-                  className="material-symbols-outlined text-secondary text-4xl"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  lan
-                </span>
-              </div>
-              <div>
-                <h3 className="font-label-md text-primary text-xl mb-1">
-                  The Bits and Bytes of Computer Networking
-                </h3>
-                <p className="font-body-md text-on-surface-variant">
-                  Certification covering core computer networking concepts,
-                  protocols, and communication fundamentals.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-              <div>
-                <span className="text-outline">ISSUER:</span> UNITED LATINO
-                STUDENTS ASSOCIATION
-              </div>
-              <div>
-                <span className="text-outline">ISSUED:</span> NOV 2025
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-              <Stamp
-                text="CLEARED"
-                colorClass="border-secondary text-secondary"
-              />
-              <div className="text-right">
-                <div className="font-label-sm text-outline mb-1">
-                  CREDENTIAL ID
-                </div>
-                <div className="font-label-sm text-primary">D7SRMMHRJYJM</div>
-              </div>
-            </div>
-          </article>
-        </AnimatedCard>
-
-        {/* ── FULL STACK BOOTCAMP ── */}
-        <AnimatedCard delay={0.25}>
-          <article className="dossier-card p-dossier-padding md:rotate-1 relative transition-transform hover:rotate-0 duration-300">
-            <div className="absolute top-2 right-2 text-on-surface-variant font-label-sm">
-              DOC_ID: 005
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4 mt-4 border-b border-outline-variant pb-4 mb-4">
-              <div className="w-16 h-16 bg-surface-container flex items-center justify-center border border-outline rounded-full shrink-0">
-                <span
-                  className="material-symbols-outlined text-primary-container text-4xl"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  code
-                </span>
-              </div>
-              <div>
-                <h3 className="font-label-md text-primary text-xl mb-1">
-                  The Complete Full-Stack Web Development Bootcamp
-                </h3>
-                <p className="font-body-md text-on-surface-variant">
-                  Comprehensive full-stack development training covering modern
-                  web technologies, APIs, backend systems, and deployment.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 font-label-sm text-on-surface-variant">
-              <div>
-                <span className="text-outline">ISSUER:</span> UDEMY
-              </div>
-              <div>
-                <span className="text-outline">ISSUED:</span> MAY 2025
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-dashed border-outline-variant flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-end">
-              <Stamp
-                text="VERIFIED"
-                colorClass="border-tertiary-container text-tertiary-container"
-              />
-              <div className="text-right">
-                <div className="font-label-sm text-outline mb-1">
-                  CREDENTIAL ID
-                </div>
-                <div className="font-label-sm text-primary">
-                  UC-50391662-C5E3-4079-80F8-29DDCC49375F
-                </div>
-              </div>
-            </div>
-          </article>
-        </AnimatedCard>
+        {/* Full Stack Bootcamp */}
+        <CredentialDoc
+          docId="004"
+          title="The Complete Full-Stack Web Development Bootcamp"
+          description="Comprehensive full-stack development training covering modern web technologies, APIs, backend systems, and deployment."
+          issuer="UDEMY"
+          issued="MAY 2025"
+          credentialId="UC-50391662-C5E3-4079-80F8-29DDCC49375F"
+          stampText="VERIFIED"
+          stampColorClass="border-tertiary-container text-tertiary-container"
+          rotation="md:-rotate-1"
+          delay={0.2}
+          iconName="code"
+          iconColor="var(--color-primary-container)"
+        />
       </section>
 
-      {/* ── FIELD OPERATIONS ── */}
+      {/* ── RIGHT COL: FIELD OPERATIONS ── */}
       <section className="md:col-span-5 space-y-6">
         <AnimatedCard className="flex items-center gap-2 mb-4 border-b border-outline pb-2" variant="slideLeft">
           <span className="material-symbols-outlined text-primary-container">
@@ -412,7 +314,7 @@ export default function Achievements() {
           </h2>
         </AnimatedCard>
 
-        {/* Flipkart Grid */}
+        {/* Flipkart GRiD */}
         <AnimatedCard delay={0.05} variant="slideLeft">
           <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center hover:-translate-y-1 transition-transform duration-200">
             <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
@@ -426,9 +328,7 @@ export default function Achievements() {
             </div>
             <div className="flex-grow">
               <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-label-md text-primary">
-                  OP: FLIPKART GRiD 8.0
-                </h4>
+                <h4 className="font-label-md text-primary">OP: FLIPKART GRiD 8.0</h4>
               </div>
               <p className="font-body-md text-on-surface-variant text-sm">
                 Competed among thousands of participants nationwide. Advanced to
@@ -456,12 +356,8 @@ export default function Achievements() {
             </div>
             <div className="flex-grow">
               <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-label-md text-primary">
-                  OP: GIRLSCRIPT SUMMER OF CODE
-                </h4>
-                <span className="font-label-sm text-on-surface-variant">
-                  GSSoC
-                </span>
+                <h4 className="font-label-md text-primary">OP: GIRLSCRIPT SUMMER OF CODE</h4>
+                <span className="font-label-sm text-on-surface-variant">GSSoC</span>
               </div>
               <p className="font-body-md text-on-surface-variant text-sm">
                 Open-source development experience contributing to collaborative
@@ -477,41 +373,102 @@ export default function Achievements() {
 
         {/* VITERA */}
         <AnimatedCard delay={0.15} variant="slideLeft">
-          <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center hover:-translate-y-1 transition-transform duration-200">
-            <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
-              <div className="absolute inset-0 bg-secondary opacity-10" />
-              <span
-                className="material-symbols-outlined text-secondary"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                groups
-              </span>
-            </div>
-            <div className="flex-grow">
-              <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-label-md text-primary">
-                  VITERA CLUB // TECH CO-LEAD
-                </h4>
-                <span className="font-label-sm text-on-surface-variant">
-                  NOV 23 - FEB 26
+          <div className="dossier-card p-4 hover:-translate-y-1 transition-transform duration-200">
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-start mb-3">
+              <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
+                <div className="absolute inset-0 bg-secondary opacity-10" />
+                <span
+                  className="material-symbols-outlined text-secondary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  groups
                 </span>
               </div>
-              <p className="font-body-md text-on-surface-variant text-sm">
-                Led 10 members, organized 5 technical workshops and coding events
-                for 300+ students, and mentored juniors in Python, Git &amp;
-                Machine Learning.
-              </p>
+              <div className="flex-grow">
+                <div className="flex flex-wrap justify-between items-baseline gap-1 mb-1">
+                  <h4 className="font-label-md text-primary">VITERA CLUB // TECH CO-LEAD</h4>
+                  <span className="font-label-sm text-on-surface-variant text-[11px]">
+                    NOV 2023 — FEB 2026
+                  </span>
+                </div>
+                <p className="font-body-md text-on-surface-variant text-sm">
+                  Led a team of 10 members. Organised 5 technical workshops and
+                  coding events for 300+ students. Mentored junior members in
+                  Python, Git &amp; Machine Learning fundamentals.
+                </p>
+              </div>
             </div>
-            <Stamp
-              text="COMMAND"
-              colorClass="border-primary-container text-primary-container"
-            />
+            {/* VITERA metrics row */}
+            <div className="grid grid-cols-3 gap-2 pt-3 border-t border-outline-variant">
+              {[
+                { value: "10", label: "TEAM" },
+                { value: "5", label: "WORKSHOPS" },
+                { value: "300+", label: "STUDENTS" },
+              ].map((m) => (
+                <div key={m.label} className="metric-box text-center py-2">
+                  <div className="font-headline-md text-lg text-primary leading-none mb-0.5">
+                    {m.value}
+                  </div>
+                  <div className="font-label-sm text-[9px] text-outline tracking-widest">
+                    {m.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 flex justify-end">
+              <Stamp text="COMMAND" colorClass="border-primary-container text-primary-container" />
+            </div>
+          </div>
+        </AnimatedCard>
+
+        {/* Coding profiles cross-link */}
+        <AnimatedCard delay={0.2} variant="slideLeft">
+          <div className="dossier-card p-4 hover:-translate-y-1 transition-transform duration-200">
+            <div className="flex items-center gap-2 mb-3 border-b border-outline-variant pb-2">
+              <span className="material-symbols-outlined text-tertiary-fixed-dim text-[18px]">
+                code
+              </span>
+              <h4 className="font-label-md text-primary">ALGORITHMIC THREAT PROFILE</h4>
+            </div>
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="metric-box">
+                <div className="font-headline-md text-xl text-primary-container leading-none mb-0.5">
+                  400+
+                </div>
+                <div className="font-label-sm text-[9px] text-outline tracking-widest">
+                  LEETCODE PROBLEMS
+                </div>
+              </div>
+              <div className="metric-box">
+                <div className="font-headline-md text-xl text-tertiary-fixed-dim leading-none mb-0.5">
+                  1357
+                </div>
+                <div className="font-label-sm text-[9px] text-outline tracking-widest">
+                  CODEFORCES RATING
+                </div>
+              </div>
+              <div className="metric-box col-span-2">
+                <div className="font-label-sm text-[11px] text-primary-container leading-none mb-0.5">
+                  TOP 6.03%
+                </div>
+                <div className="font-label-sm text-[9px] text-outline tracking-widest">
+                  LEETCODE PERCENTILE
+                </div>
+              </div>
+            </div>
+            <Link
+              href="/coding"
+              className="font-label-md text-label-md text-primary border border-outline-variant px-3 py-2 flex items-center gap-2 hover:border-primary-container hover:text-primary-container transition-all btn-sweep w-full justify-center"
+            >
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              VIEW INTEL PROFILE
+            </Link>
           </div>
         </AnimatedCard>
 
         {/* Record Summary */}
-        <AnimatedCard delay={0.2} variant="slideLeft">
-          <div className="dossier-card p-5 md:-rotate-2">
+        <AnimatedCard delay={0.25} variant="slideLeft">
+          <div className="dossier-card p-5 md:-rotate-2 hover:rotate-0 transition-transform duration-300">
             <div className="flex items-center gap-2 mb-4 border-b border-outline-variant pb-2">
               <span className="material-symbols-outlined text-tertiary-fixed-dim">
                 military_tech
@@ -524,13 +481,13 @@ export default function Achievements() {
                 <span className="font-label-sm text-on-surface-variant block">
                   CERTIFICATIONS
                 </span>
-                <span className="font-headline-md text-primary">05</span>
+                <span className="font-headline-md text-primary">04</span>
               </div>
               <div>
                 <span className="font-label-sm text-on-surface-variant block">
                   COMPETITIONS
                 </span>
-                <span className="font-headline-md text-primary">01+</span>
+                <span className="font-headline-md text-primary">02+</span>
               </div>
               <div>
                 <span className="font-label-sm text-on-surface-variant block">

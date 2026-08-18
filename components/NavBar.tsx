@@ -30,9 +30,13 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-gutter py-4 bg-surface/95 backdrop-blur-sm border-b-2 border-outline dark:border-outline-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      {/* ── Top Navigation Bar ── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 md:px-6 py-4 bg-surface/95 backdrop-blur-sm border-b-2 border-outline dark:border-outline-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         {/* Brand */}
-        <Link href="/" className="font-label-md text-label-sm sm:text-label-md font-bold tracking-widest text-primary bg-on-primary-fixed-variant px-2 py-1 truncate max-w-[50%] md:max-w-none relative hover:text-on-primary hover:bg-primary transition-colors block">
+        <Link
+          href="/"
+          className="font-label-md text-label-sm sm:text-label-md font-bold tracking-widest text-primary bg-on-primary-fixed-variant px-2 py-1 truncate max-w-[50%] md:max-w-none relative hover:text-on-primary hover:bg-primary transition-colors block"
+        >
           CASE_FILE: SHRAVAN_JAIN
         </Link>
 
@@ -181,19 +185,49 @@ export default function NavBar() {
         </AnimatePresence>
       </nav>
 
-      {/* ── Left Hanging Pill (Desktop) / Bottom Dock (Mobile) ── */}
+      {/*
+        ── Left Access Pill (Desktop) / Bottom Dock (Mobile) ──
+
+        DESKTOP (md+):
+          - position: fixed
+          - left: 20px (simple, reliable — never causes overflow)
+          - top: 50%, translateY(-50%) = vertically centered
+          - width: 56px (w-14)
+          - The layout.tsx content wrapper has pl-[88px] to clear this pill
+
+        MOBILE (<md):
+          - position: fixed
+          - bottom: 1rem, left: 50%, translateX(-50%) = centered at bottom
+          - horizontal pill layout
+          - pb-24 on content wrapper clears this
+      */}
       <AnimatePresence>
         {isAccessOpen && (
           <motion.div
             key="access-pill"
-            className="flex fixed md:top-1/2 md:-translate-y-1/2 bottom-4 left-1/2 -translate-x-1/2 md:-translate-x-0 md:left-[max(1.5rem,calc(25vw-21.75rem))] md:w-14 w-[calc(100%-2rem)] max-w-sm md:py-4 px-6 md:px-0 py-3 bg-surface-container/90 backdrop-blur-md border-2 border-outline rounded-[40px] flex-row md:flex-col items-center justify-between md:justify-center gap-2 md:gap-4 z-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-            initial={{ opacity: 0, scale: 0.9, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 16 }}
+            /*
+              Mobile: centered bottom dock (horizontal)
+              Desktop: fixed left vertical pill
+            */
+            className="fixed z-50
+              /* mobile bottom dock */
+              bottom-4 left-1/2 -translate-x-1/2
+              flex-row w-auto max-w-[calc(100vw-2rem)] px-5 py-3
+              /* desktop left pill — override mobile styles */
+              md:bottom-auto md:left-5 md:top-1/2 md:-translate-x-0 md:-translate-y-1/2
+              md:flex-col md:w-14 md:px-0 md:py-5
+              /* shared */
+              flex items-center justify-center gap-3 md:gap-4
+              bg-surface-container/95 backdrop-blur-md
+              border-2 border-outline rounded-[40px]
+              shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Gold Status Dot */}
-            <div className="w-2 h-2 rounded-full bg-primary-container status-pulse mb-1" />
+            <div className="w-2 h-2 rounded-full bg-primary-container status-pulse hidden md:block mb-1" />
 
             {/* Resume */}
             <motion.a
@@ -209,7 +243,7 @@ export default function NavBar() {
               </span>
             </motion.a>
 
-            <div className="h-6 w-[2px] md:w-6 md:h-[2px] bg-outline-variant/50" />
+            <div className="h-6 w-[1px] md:w-full md:h-[1px] bg-outline-variant/50" />
 
             {/* LinkedIn */}
             <motion.a
@@ -224,7 +258,7 @@ export default function NavBar() {
               <span className="text-[14px] tracking-tighter">in</span>
             </motion.a>
 
-            <div className="h-6 w-[2px] md:w-6 md:h-[2px] bg-outline-variant/50" />
+            <div className="h-6 w-[1px] md:w-full md:h-[1px] bg-outline-variant/50" />
 
             {/* GitHub */}
             <motion.a
@@ -239,7 +273,7 @@ export default function NavBar() {
               <span className="text-[14px] tracking-tighter">GH</span>
             </motion.a>
 
-            <div className="h-6 w-[2px] md:w-6 md:h-[2px] bg-outline-variant/50" />
+            <div className="h-6 w-[1px] md:w-full md:h-[1px] bg-outline-variant/50" />
 
             {/* Email */}
             <motion.a
@@ -253,6 +287,24 @@ export default function NavBar() {
                 mail
               </span>
             </motion.a>
+
+            {/* Desktop: vertical ACCESS label */}
+            <div
+              className="hidden md:flex items-center justify-center mt-3"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "mixed",
+                transform: "rotate(180deg)",
+                fontSize: "9px",
+                letterSpacing: "0.2em",
+                color: "var(--color-outline)",
+                fontFamily: "var(--font-jetbrains-mono)",
+                fontWeight: 700,
+                opacity: 0.6,
+              }}
+            >
+              ACCESS
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

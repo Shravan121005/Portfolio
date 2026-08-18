@@ -71,6 +71,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`dark ${courierPrime.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      style={{ overflowX: "hidden" }}
     >
       <head>
         <link
@@ -78,7 +79,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-background text-on-background min-h-full relative overflow-x-hidden flex flex-col">
+      <body
+        className="bg-background text-on-background min-h-full relative flex flex-col"
+        style={{ overflowX: "hidden" }}
+      >
         <BootSequence />
         <ShaderBackground />
 
@@ -94,7 +98,17 @@ export default function RootLayout({
 
         <NavBar />
 
-        <div className="flex-grow flex flex-col z-10 pt-32 pb-24 px-margin-page max-w-7xl mx-auto w-full relative">
+        {/*
+          Content wrapper:
+          - pt-32 clears the fixed navbar
+          - pb-24 clears the mobile bottom dock pill
+          - On md+: pl-[88px] reserves space for the fixed left pill (56px pill + ~32px gap)
+          - max-w-7xl centers content on wide screens
+        */}
+        <div
+          className="flex-grow flex flex-col z-10 pt-32 pb-24 md:pb-16 px-4 sm:px-6 md:pl-[88px] md:pr-8 lg:pr-12 max-w-[1400px] w-full relative"
+          style={{ marginLeft: 0, marginRight: "auto" }}
+        >
           <PageTransition>{children}</PageTransition>
         </div>
 

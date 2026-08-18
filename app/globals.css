@@ -129,6 +129,11 @@
 }
 
 @layer utilities {
+  /* ── Overflow containment ── */
+  .overflow-x-clip {
+    overflow-x: clip;
+  }
+
   /* ── Scanline overlay ── */
   .scanlines {
     background: linear-gradient(
@@ -175,6 +180,78 @@
     box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
     background-color: #1a1a1a;
     position: relative;
+  }
+
+  /* ── Exhibit card — larger, featured ── */
+  .exhibit-card {
+    border: 1px solid #333333;
+    background-color: #111111;
+    position: relative;
+    overflow: hidden;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .exhibit-card:hover,
+  .exhibit-card.active {
+    border-color: #ffd700;
+    box-shadow:
+      0 0 0 1px #ffd70022,
+      6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+  .exhibit-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .exhibit-card:hover::before,
+  .exhibit-card.active::before {
+    opacity: 1;
+  }
+
+  /* ── Skill cell — engineering toolkit ── */
+  .skill-cell {
+    border: 1px solid #2a2a2a;
+    background-color: #151515;
+    position: relative;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+  .skill-cell:hover {
+    border-color: #4d4732;
+    background-color: #1a1a1a;
+  }
+  .skill-cell::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #ffd700;
+    transition: width 0.3s ease;
+  }
+  .skill-cell:hover::after {
+    width: 100%;
+  }
+
+  /* ── Credential document ── */
+  .credential-doc {
+    border: 1px solid #333333;
+    background-color: #161616;
+    position: relative;
+    box-shadow:
+      0 1px 0 0 #222,
+      0 2px 0 0 #1a1a1a,
+      0 3px 0 0 #111,
+      4px 6px 0px 0px rgba(0, 0, 0, 1);
   }
 
   /* ── Tape strip ── */
@@ -260,6 +337,67 @@
     pointer-events: none;
   }
 
+  /* ── Exhibit tab button ── */
+  .exhibit-tab {
+    border: 1px solid #2a2a2a;
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease,
+      background-color 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+  }
+  .exhibit-tab.active {
+    border-color: #ffd700;
+    color: #ffd700;
+    background-color: #1a1600;
+  }
+  .exhibit-tab:not(.active):hover {
+    border-color: #4d4732;
+    color: #d0c6ab;
+  }
+
+  /* ── Section divider rule ── */
+  .section-rule {
+    border: none;
+    border-top: 1px solid #333;
+    position: relative;
+  }
+  .section-rule::before {
+    content: "◆";
+    position: absolute;
+    top: -0.6em;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #131313;
+    color: #4d4732;
+    font-size: 10px;
+    padding: 0 8px;
+  }
+
+  /* ── Metric display box ── */
+  .metric-box {
+    border: 1px solid #2a2a2a;
+    background: #0e0e0e;
+    padding: 0.75rem 1rem;
+    position: relative;
+  }
+  .metric-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: #ffd700;
+    opacity: 0.6;
+  }
+
   /* ═══════════════════════════════════════
      KEYFRAMES
   ═══════════════════════════════════════ */
@@ -329,6 +467,71 @@
     }
     97% {
       opacity: 1;
+    }
+  }
+
+  /* ── Border draw (left → right) ── */
+  @keyframes border-draw-h {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  /* ── Vertical scan sweep ── */
+  @keyframes scan-v {
+    0% {
+      top: -20%;
+    }
+    100% {
+      top: 120%;
+    }
+  }
+
+  /* ── Stamp punch-in ── */
+  @keyframes stamp-punch {
+    0% {
+      opacity: 0;
+      transform: rotate(-15deg) scale(1.8);
+    }
+    60% {
+      opacity: 1;
+      transform: rotate(-15deg) scale(0.92);
+    }
+    80% {
+      transform: rotate(-15deg) scale(1.04);
+    }
+    100% {
+      opacity: 0.85;
+      transform: rotate(-15deg) scale(1);
+    }
+  }
+
+  /* ── Exhibit reveal ── */
+  @keyframes exhibit-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+      clip-path: inset(8px 0 0 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  /* ── Skill cell stagger ── */
+  @keyframes skill-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 

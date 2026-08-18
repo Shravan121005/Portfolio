@@ -1,180 +1,319 @@
 "use client";
 
-import { motion, useReducedMotion, useInView, Variants } from "motion/react";
-import { useRef } from "react";
+import { motion, useReducedMotion, useInView, AnimatePresence, Variants } from "motion/react";
+import { useRef, useState } from "react";
 
 // ── Shared variants ───────────────────────────────────────────────────────────
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0 },
-};
 
 const headerReveal: Variants = {
   hidden: { opacity: 0, x: -16 },
   visible: { opacity: 1, x: 0 },
 };
 
-// ── Project card data ─────────────────────────────────────────────────────────
+const exhibitEnter: Variants = {
+  hidden: { opacity: 0, y: 16, clipPath: "inset(8px 0 0 0)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    clipPath: "inset(0px 0 0 0)",
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+  },
+  exit: {
+    opacity: 0,
+    y: -12,
+    clipPath: "inset(0 0 8px 0)",
+    transition: { duration: 0.25, ease: "easeIn" },
+  },
+};
+
+const metaReveal: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.06, delayChildren: 0.2 },
+  },
+};
+
+const metaItem: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } },
+};
+
+// ── Project data ──────────────────────────────────────────────────────────────
 
 const projects = [
   {
-    exhibit: "EXH A",
-    title: "DEEPGUARD AI",
+    id: "deepguard",
+    exhibitNo: "01",
     caseNo: "CASE_NO: 001",
+    title: "DEEPGUARD AI",
+    subtitle: "AI-generated image detection system",
     icon: "image_search",
-    rotation: "rotate-0",
-    date: "NOV 25 - FEB 26",
-    dateLabel: "DATE",
-    description1:
-      "AI-generated image detection system built with EfficientNet, achieving 96.2% accuracy and 95.8% F1-score across modern generative image architectures.",
-    description2:
-      "Improved generalization through augmentation and regularization, with a FastAPI inference service and Grad-CAM explainability under <100 ms latency.",
+    date: "NOV 2025 — FEB 2026",
+    category: "MACHINE LEARNING / COMPUTER VISION",
+    description:
+      "AI-generated image detection system built with EfficientNet, achieving 96.2% accuracy and 95.8% F1-score across modern generative image architectures. Improved generalisation through augmentation and regularisation, with a FastAPI inference service and Grad-CAM explainability.",
+    metrics: [
+      { label: "ACCURACY", value: "96.2%", color: "#ffd700" },
+      { label: "F1-SCORE", value: "95.8%", color: "#ffd700" },
+      { label: "LATENCY", value: "<100ms", color: "#00e639" },
+    ],
+    architecture: ["EfficientNet", "FastAPI", "Docker", "Grad-CAM"],
     tags: ["PYTHON", "PYTORCH", "EFFICIENTNET", "FASTAPI", "DOCKER"],
     github: "https://github.com/Shravan121005/DeepgaurdAI",
+    status: "DEPLOYED",
   },
   {
-    exhibit: "EXH B",
-    title: "BUGINSIGHT",
+    id: "buginsight",
+    exhibitNo: "02",
     caseNo: "CASE_NO: 002",
+    title: "BUGINSIGHT",
+    subtitle: "Issue severity & resolution prediction pipeline",
     icon: "bug_report",
-    rotation: "rotate-[1deg]",
-    date: "MAY 25 - AUG 25",
-    dateLabel: "DATE",
-    description1:
-      "Dual-task ML pipeline predicting GitHub issue severity and resolution time, achieving a 91.3% F1-score and 1.8-day RMSE.",
-    description2:
-      "Improved prediction performance by 12% through NLP-based feature engineering and model optimization, with FastAPI and automated GitHub API integration.",
+    date: "MAY 2025 — AUG 2025",
+    category: "MACHINE LEARNING / NLP",
+    description:
+      "Dual-task ML pipeline predicting GitHub issue severity and resolution time, achieving a 91.3% F1-score and 1.8-day RMSE. Improved prediction performance by 12% through NLP-based feature engineering and model optimisation, with FastAPI and automated GitHub API integration.",
+    metrics: [
+      { label: "F1-SCORE", value: "91.3%", color: "#ffd700" },
+      { label: "RMSE", value: "1.8 days", color: "#ffd700" },
+      { label: "LATENCY", value: "<120ms", color: "#00e639" },
+    ],
+    architecture: ["XGBoost", "LightGBM", "SHAP", "FastAPI"],
     tags: ["SCIKIT-LEARN", "XGBOOST", "LIGHTGBM", "NLP", "FASTAPI"],
     github: "https://github.com/Shravan121005/BugInsight",
+    status: "DEPLOYED",
   },
   {
-    exhibit: "EXH C",
-    title: "SMARTDIET AI",
+    id: "smartdiet",
+    exhibitNo: "03",
     caseNo: "CASE_NO: 003",
+    title: "SMARTDIET AI",
+    subtitle: "Nutrition recommendation & calorie prediction",
     icon: "restaurant",
-    rotation: "rotate-[-1deg]",
-    date: "OCT 24 - JAN 25",
-    dateLabel: "DATE",
-    description1:
-      "Nutrition recommendation and calorie prediction system trained on 500+ dietary records, achieving 78% prediction accuracy.",
-    description2:
-      "Reduced calorie prediction error by 15% through feature engineering and regression optimization, integrated into a full-stack React and Flask application.",
+    date: "OCT 2024 — JAN 2025",
+    category: "MACHINE LEARNING / FULL STACK",
+    description:
+      "Nutrition recommendation and calorie prediction system trained on 500+ dietary records, achieving 78% prediction accuracy. Reduced calorie prediction error by 15% through feature engineering and regression optimisation, integrated into a full-stack React and Flask application.",
+    metrics: [
+      { label: "ACCURACY", value: "78%", color: "#ffd700" },
+      { label: "RECORDS", value: "500+", color: "#d0c6ab" },
+      { label: "ERROR REDUCTION", value: "−15%", color: "#00e639" },
+    ],
+    architecture: ["XGBoost", "React.js", "Flask", "MongoDB"],
     tags: ["PYTHON", "REACT.JS", "FLASK", "XGBOOST", "MONGODB"],
     github: "https://github.com/Shravan121005/SmartDietAi",
+    status: "DEPLOYED",
   },
   {
-    exhibit: "EXH D",
-    title: "OIL WELL CHOKE",
+    id: "oilwell",
+    exhibitNo: "04",
     caseNo: "CASE_NO: 004",
+    title: "OIL WELL CHOKE",
+    subtitle: "Autonomous choke control — Honeywell AI Hackathon",
     icon: "oil_barrel",
-    rotation: "rotate-[1deg]",
-    date: "HONEYWELL AI HACKATHON",
-    dateLabel: "EVENT",
-    description1:
-      "Autonomous oil well choke control system built for the Honeywell Industrial AI Hackathon using a data-driven Digital Twin and Model Predictive Control.",
-    description2:
-      "Developed a predictive well model and closed-loop MPC controller to track production targets while maintaining pressure and operational constraints.",
+    date: "HONEYWELL INDUSTRIAL AI HACKATHON",
+    category: "INDUSTRIAL AI / PREDICTIVE CONTROL",
+    description:
+      "Autonomous oil well choke control system built for the Honeywell Industrial AI Hackathon using a data-driven Digital Twin and Model Predictive Control. Developed a predictive well model and closed-loop MPC controller to track production targets while maintaining pressure and operational constraints.",
+    metrics: [
+      { label: "METHOD", value: "MPC", color: "#d0c6ab" },
+      { label: "PARADIGM", value: "DIGITAL TWIN", color: "#d0c6ab" },
+      { label: "EVENT", value: "HACKATHON", color: "#ffb4a5" },
+    ],
+    architecture: ["MPC", "Digital Twin", "Scikit-learn", "Pandas"],
     tags: ["PYTHON", "PANDAS", "SCIKIT-LEARN", "MPC", "DIGITAL-TWIN"],
     github: "https://github.com/Shravan121005/OilWellChokePrediction",
+    status: "HACKATHON",
   },
 ];
 
-// ── Project Card Component ────────────────────────────────────────────────────
+// ── Exhibit Tab ───────────────────────────────────────────────────────────────
 
-function ProjectCard({
+function ExhibitTab({
+  exhibitNo,
+  title,
+  isActive,
+  onClick,
+}: {
+  exhibitNo: string;
+  title: string;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`exhibit-tab px-3 py-2 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-primary${isActive ? " active" : ""}`}
+      aria-label={`View Exhibit ${exhibitNo}: ${title}`}
+      aria-pressed={isActive}
+    >
+      <span
+        className="font-label-sm text-[10px] tracking-widest"
+        style={{ color: isActive ? "#ffd700" : "#4d4732" }}
+      >
+        EXH {exhibitNo}
+      </span>
+      <span
+        className="font-label-md text-[11px] truncate max-w-[120px] sm:max-w-none"
+        style={{ color: isActive ? "#fff6df" : "#999077" }}
+      >
+        {title}
+      </span>
+    </button>
+  );
+}
+
+// ── Featured Exhibit Card ─────────────────────────────────────────────────────
+
+function ExhibitCard({
   project,
-  index,
   prefersReducedMotion,
 }: {
   project: (typeof projects)[number];
-  index: number;
   prefersReducedMotion: boolean | null;
 }) {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const statusColor =
+    project.status === "DEPLOYED"
+      ? "#00e639"
+      : project.status === "HACKATHON"
+      ? "#ffb4a5"
+      : "#ffd700";
 
   return (
     <motion.article
-      ref={ref}
-      className={`dossier-card p-dossier-padding flex flex-col h-full group ${project.rotation}`}
-      variants={fadeUp}
-      initial={prefersReducedMotion ? false : "hidden"}
-      animate={inView ? "visible" : "hidden"}
-      transition={
-        prefersReducedMotion
-          ? { duration: 0 }
-          : {
-              duration: 0.55,
-              delay: (index % 2) * 0.1,
-              ease: [0.16, 1, 0.3, 1],
-            }
-      }
-      whileHover={
-        prefersReducedMotion
-          ? {}
-          : {
-              y: -4,
-              transition: { duration: 0.2, ease: "easeOut" },
-            }
-      }
+      key={project.id}
+      className="exhibit-card w-full active"
+      variants={exhibitEnter}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      layout
     >
-      {/* Card header */}
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-6 border-b border-outline-variant pb-4">
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="material-symbols-outlined text-primary shrink-0">
+      {/* ── Top header bar ── */}
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 px-6 pt-6 pb-5 border-b border-[#222]">
+        <div className="flex items-start gap-3 min-w-0">
+          <span className="material-symbols-outlined text-primary-container text-2xl shrink-0 mt-0.5">
             {project.icon}
           </span>
-          <h2 className="font-headline-md text-primary tracking-tight text-xl md:text-[32px] break-words min-w-0">
-            {project.exhibit}: {project.title}
-          </h2>
+          <div className="min-w-0">
+            <div className="font-label-sm text-[10px] text-outline tracking-widest mb-1">
+              CASE STUDY / EXHIBIT {project.exhibitNo} / 04 &nbsp;·&nbsp; {project.caseNo}
+            </div>
+            <h2 className="font-headline-lg-mobile md:font-headline-md text-primary uppercase tracking-tight leading-tight">
+              {project.title}
+            </h2>
+            <p className="font-label-md text-label-md text-on-surface-variant mt-1">
+              {project.subtitle}
+            </p>
+          </div>
         </div>
-        <span className="font-label-sm bg-surface-bright text-on-surface px-2 py-1 font-bold self-start shrink-0">
-          {project.caseNo}
-        </span>
+
+        <div className="flex flex-row sm:flex-col items-center sm:items-end gap-3 shrink-0">
+          {/* Status badge */}
+          <div
+            className="font-label-sm text-[10px] px-2 py-1 border tracking-widest"
+            style={{
+              color: statusColor,
+              borderColor: statusColor + "44",
+              backgroundColor: statusColor + "11",
+            }}
+          >
+            {project.status}
+          </div>
+          {/* Category */}
+          <div className="font-label-sm text-[10px] text-outline tracking-wider text-right hidden sm:block">
+            {project.category}
+          </div>
+        </div>
       </div>
 
-      {/* Description */}
-      <div className="flex-grow mb-6">
-        <p className="font-body-md text-on-surface-variant mb-4">
-          {project.description1}
-        </p>
-        <p className="font-body-md text-on-surface-variant mb-4">
-          {project.description2}
-        </p>
+      {/* ── Main body ── */}
+      <motion.div
+        className="grid grid-cols-1 lg:grid-cols-5 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-[#1f1f1f]"
+        variants={metaReveal}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Left col: description + tags */}
+        <motion.div className="lg:col-span-3 p-6 flex flex-col gap-5" variants={metaItem}>
+          {/* Date */}
+          <div className="font-label-sm text-[10px] text-outline tracking-widest">
+            {project.date}
+          </div>
 
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-2 mt-4">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="evidence-tag bg-surface-container text-primary font-label-sm px-2 py-1"
+          {/* Description */}
+          <p className="font-body-md text-on-surface-variant leading-relaxed">
+            {project.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-[#1f1f1f]">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="evidence-tag bg-surface-container text-on-surface-variant font-label-sm text-[10px] px-2 py-1 tracking-widest"
+              >
+                TAG: {tag}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Right col: metrics + architecture */}
+        <div className="lg:col-span-2 flex flex-col divide-y divide-[#1f1f1f]">
+          {/* Metrics */}
+          <motion.div className="p-6" variants={metaItem}>
+            <div className="font-label-sm text-[10px] text-outline tracking-widest mb-4">
+              PERFORMANCE METRICS
+            </div>
+            <div className="grid grid-cols-3 gap-3 lg:grid-cols-1 lg:gap-4">
+              {project.metrics.map((m) => (
+                <div key={m.label} className="metric-box">
+                  <div
+                    className="font-headline-md text-xl leading-none mb-1"
+                    style={{ color: m.color }}
+                  >
+                    {m.value}
+                  </div>
+                  <div className="font-label-sm text-[9px] text-outline tracking-widest">
+                    {m.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Architecture */}
+          <motion.div className="p-6" variants={metaItem}>
+            <div className="font-label-sm text-[10px] text-outline tracking-widest mb-4">
+              ARCHITECTURE / STACK
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.architecture.map((a) => (
+                <span
+                  key={a}
+                  className="font-label-sm text-[11px] bg-surface-container-high border border-outline-variant px-2 py-1 text-on-surface-variant"
+                >
+                  {a}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div className="p-6 mt-auto" variants={metaItem}>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary-container text-on-primary-container font-label-md text-label-md px-5 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] btn-sweep flex items-center justify-center gap-2 cursor-pointer w-full text-center hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 uppercase"
             >
-              TAG: {tag}
-            </span>
-          ))}
+              <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+              ACCESS FILE
+            </a>
+          </motion.div>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="mt-auto border-t border-outline-variant pt-4 flex flex-wrap gap-4 justify-between items-center">
-        <span className="font-label-sm text-on-surface-variant">
-          {project.dateLabel}:{" "}
-          <span className="text-tertiary-fixed-dim">{project.date}</span>
-        </span>
-
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-primary text-on-primary font-label-md px-4 py-2 hover:bg-primary-container btn-sweep flex items-center gap-2 border border-on-primary-fixed uppercase font-bold cursor-pointer transition-all hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px]"
-        >
-          ACCESS FILE
-          <span className="material-symbols-outlined text-sm">
-            arrow_forward
-          </span>
-        </a>
-      </div>
+      </motion.div>
     </motion.article>
   );
 }
@@ -183,15 +322,19 @@ function ProjectCard({
 
 export default function Projects() {
   const prefersReducedMotion = useReducedMotion();
+  const [activeIdx, setActiveIdx] = useState(0);
+
   const headerRef = useRef<HTMLElement>(null);
   const headerInView = useInView(headerRef, { once: true });
 
+  const activeProject = projects[activeIdx];
+
   return (
     <main className="w-full">
-      {/* Header */}
+      {/* ── Header ── */}
       <motion.header
         ref={headerRef}
-        className="mb-12 border-b border-outline-variant pb-6"
+        className="mb-10 border-b border-outline-variant pb-6"
         variants={headerReveal}
         initial={prefersReducedMotion ? false : "hidden"}
         animate={headerInView ? "visible" : "hidden"}
@@ -199,7 +342,7 @@ export default function Projects() {
           prefersReducedMotion ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
         }
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-2">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-3">
           <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary uppercase tracking-tight">
             <span className="blinking-cursor">EVIDENCE LOG: TECHNICAL PROJECTS</span>
           </h1>
@@ -208,25 +351,139 @@ export default function Projects() {
           </span>
         </div>
 
-        <p className="font-body-lg text-on-surface-variant max-w-2xl">
-          &gt; INITIALIZING QUERY...
+        <div className="font-body-md text-on-surface-variant">
+          <span className="text-outline">&gt; </span>INITIALIZING QUERY...
           <br />
-          &gt; RETRIEVING ARCHIVED TECHNICAL EXECUTIONS...
+          <span className="text-outline">&gt; </span>RETRIEVING ARCHIVED TECHNICAL EXECUTIONS...
           <br />
-          &gt; WARNING: CONTENTS MAY CONTAIN HIGHLY CLASSIFIED ALGORITHMS.
-        </p>
+          <span className="text-tertiary-fixed-dim">&gt; </span>
+          <span className="text-tertiary-fixed-dim/80">
+            WARNING: CONTENTS MAY CONTAIN HIGHLY CLASSIFIED ALGORITHMS.
+          </span>
+        </div>
       </motion.header>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={project.exhibit}
-            project={project}
-            index={index}
-            prefersReducedMotion={prefersReducedMotion}
+      {/* ── Exhibit navigator tabs ── */}
+      <div className="mb-6">
+        {/* Tab row — scroll on very small screens, no overflow on normal */}
+        <div
+          className="flex gap-2 overflow-x-auto pb-1"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          role="tablist"
+          aria-label="Project exhibits"
+        >
+          {projects.map((p, idx) => (
+            <ExhibitTab
+              key={p.id}
+              exhibitNo={p.exhibitNo}
+              title={p.title}
+              isActive={idx === activeIdx}
+              onClick={() => setActiveIdx(idx)}
+            />
+          ))}
+
+          {/* Counter */}
+          <div className="ml-auto shrink-0 flex items-center gap-1 font-label-sm text-[11px] text-outline pl-4">
+            <span className="text-primary">{String(activeIdx + 1).padStart(2, "0")}</span>
+            <span>/</span>
+            <span>{projects.length.toString().padStart(2, "0")}</span>
+          </div>
+        </div>
+
+        {/* Progress bar under tabs */}
+        <div className="mt-2 h-[1px] bg-[#1a1a1a] relative overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-0 h-full bg-primary-container"
+            animate={{ width: `${((activeIdx + 1) / projects.length) * 100}%` }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           />
-        ))}
+        </div>
+      </div>
+
+      {/* ── Featured exhibit ── */}
+      <AnimatePresence mode="wait">
+        <ExhibitCard
+          key={activeProject.id}
+          project={activeProject}
+          prefersReducedMotion={prefersReducedMotion}
+        />
+      </AnimatePresence>
+
+      {/* ── Prev / Next navigation ── */}
+      <div className="mt-6 flex items-center justify-between">
+        <button
+          onClick={() => setActiveIdx((i) => Math.max(0, i - 1))}
+          disabled={activeIdx === 0}
+          className="exhibit-tab px-4 py-2 flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+          aria-label="Previous exhibit"
+        >
+          <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+          <span>PREV EXHIBIT</span>
+        </button>
+
+        {/* Dot indicators */}
+        <div className="flex gap-2">
+          {projects.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIdx(idx)}
+              className="focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+              aria-label={`Go to exhibit ${idx + 1}`}
+            >
+              <motion.div
+                className="w-2 h-2 rounded-full"
+                animate={{
+                  backgroundColor: idx === activeIdx ? "#ffd700" : "#2a2a2a",
+                  scale: idx === activeIdx ? 1.3 : 1,
+                }}
+                transition={{ duration: 0.2 }}
+              />
+            </button>
+          ))}
+        </div>
+
+        <button
+          onClick={() => setActiveIdx((i) => Math.min(projects.length - 1, i + 1))}
+          disabled={activeIdx === projects.length - 1}
+          className="exhibit-tab px-4 py-2 flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+          aria-label="Next exhibit"
+        >
+          <span>NEXT EXHIBIT</span>
+          <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </button>
+      </div>
+
+      {/* ── All exhibits quick-reference ── */}
+      <div className="mt-12 border-t border-outline-variant pt-8">
+        <div className="font-label-sm text-[10px] text-outline tracking-widest mb-4">
+          ALL EXHIBITS // QUICK REFERENCE
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {projects.map((p, idx) => (
+            <button
+              key={p.id}
+              onClick={() => setActiveIdx(idx)}
+              className={`text-left p-3 border transition-all focus:outline-none focus-visible:ring-1 focus-visible:ring-primary ${
+                idx === activeIdx
+                  ? "border-primary-container bg-[#1a1600]"
+                  : "border-[#222] hover:border-outline-variant bg-[#111]"
+              }`}
+            >
+              <div
+                className="font-label-sm text-[10px] mb-1 tracking-wider"
+                style={{ color: idx === activeIdx ? "#ffd700" : "#4d4732" }}
+              >
+                EXH {p.exhibitNo}
+              </div>
+              <div
+                className="font-label-md text-[12px] truncate"
+                style={{ color: idx === activeIdx ? "#fff6df" : "#999077" }}
+              >
+                {p.title}
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
     </main>
   );
