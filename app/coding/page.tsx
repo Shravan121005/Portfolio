@@ -38,8 +38,9 @@ function Counter({
   }, [inView, target, suffix, prefersReducedMotion]);
 
   return (
-    <span ref={ref} className={className}>
-      0{suffix}
+    <span className={className}>
+      <span className="sr-only">{target}{suffix}</span>
+      <span aria-hidden="true" ref={ref}>0{suffix}</span>
     </span>
   );
 }
@@ -101,7 +102,7 @@ export default function Coding() {
   return (
     <main className="w-full flex flex-col">
       {/* Header */}
-      <motion.div
+      <motion.header
         ref={headerRef}
         className="mb-12 border-b border-outline-variant pb-6 scan-sweep"
         initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
@@ -119,10 +120,10 @@ export default function Coding() {
             LIVE
           </span>
         </div>
-      </motion.div>
+      </motion.header>
 
       {/* Single Column Layout */}
-      <div className="flex flex-col gap-10 flex-grow">
+      <section className="flex flex-col gap-10 flex-grow">
 
         {/* ── CODEFORCES ── */}
         <motion.article
@@ -185,6 +186,7 @@ export default function Coding() {
               href="https://codeforces.com/profile/ShravanJain"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="View Shravan Jain's Codeforces Profile"
               className="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 uppercase btn-sweep hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform border border-on-primary-container shadow-[2px_2px_0px_0px_#000] text-center whitespace-nowrap"
             >
               OPEN PROFILE
@@ -308,6 +310,7 @@ export default function Coding() {
               href="https://leetcode.com/u/Shravan121005/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="View Shravan Jain's LeetCode Profile"
               className="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 uppercase btn-sweep hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform border border-on-primary-container shadow-[2px_2px_0px_0px_#000] text-center whitespace-nowrap"
             >
               OPEN PROFILE
@@ -385,6 +388,7 @@ export default function Coding() {
               href="https://www.geeksforgeeks.org/user/shravanjain1210/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="View Shravan Jain's GeeksForGeeks Profile"
               className="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 uppercase btn-sweep hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform border border-on-primary-container shadow-[2px_2px_0px_0px_#000] text-center whitespace-nowrap"
             >
               OPEN PROFILE
@@ -392,7 +396,7 @@ export default function Coding() {
           </div>
         </motion.article>
 
-      </div>
+      </section>
     </main>
   );
 }

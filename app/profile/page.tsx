@@ -127,7 +127,7 @@ export default function Profile() {
         <div className="font-label-sm text-[10px] text-outline tracking-widest mb-3 space-y-0.5">
           <div><span className="text-tertiary-fixed-dim">&gt; </span>ENGINEERING PROFILE</div>
           <div><span className="text-outline">&gt; </span>ANALYZING TECHNICAL CAPABILITIES...</div>
-          <div><span className="text-tertiary-fixed-dim">&gt; </span>CLASSIFICATION: DEVELOPER // CLEARANCE: LEVEL-5</div>
+          <div><span className="text-tertiary-fixed-dim">&gt; </span>ROLE: FULL-STACK ENGINEER // EXPERIENCE: MID-LEVEL</div>
         </div>
         <p className="font-body-md text-on-surface-variant mt-2">
           REF: TECH-PROFILE-01 // TECHNICAL CAPABILITIES &amp; ENGINEERING PROFILE

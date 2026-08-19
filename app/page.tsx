@@ -41,9 +41,10 @@ export default function Home() {
 
   return (
     <main className="flex flex-col md:flex-row gap-12 items-start justify-center w-full">
+      <h1 className="sr-only">Shravan Jain — ML Engineer & Full-Stack Developer</h1>
 
-      {/* ── Subject Polaroid (Left Col) ── */}
-      <motion.div
+      {/* ── Profile Image (Left Col) ── */}
+      <motion.aside
         className="w-full md:w-1/3 flex justify-center md:justify-end md:sticky md:top-32"
         initial={prefersReducedMotion ? false : { opacity: 0, rotate: -8, y: 30 }}
         animate={{ opacity: 1, rotate: -2, y: 0 }}
@@ -66,7 +67,7 @@ export default function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="w-full h-80 object-contain border-b-4 border-r-4 border-surface-container-lowest filter grayscale contrast-125 mb-4"
-            alt="A professional high-contrast black and white photograph of a male software engineer."
+            alt="Shravan Jain professional profile photo"
             src="/profile.png"
           />
           <div className="font-label-md text-label-md text-on-surface-variant flex justify-between border-b border-outline-variant pb-2">
@@ -79,10 +80,10 @@ export default function Home() {
             &quot;Build. Learn. Deploy.&quot;
           </div>
         </div>
-      </motion.div>
+      </motion.aside>
 
-      {/* ── Dossier Content (Right Col) ── */}
-      <motion.div
+      {/* ── Profile Content (Right Col) ── */}
+      <motion.section
         className="w-full md:w-2/3 flex flex-col gap-8 md:rotate-[1deg]"
         variants={staggerContainer}
         initial={initialState}
@@ -98,12 +99,12 @@ export default function Home() {
           <div className="absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-sm px-3 py-1 border-l border-b border-[#333333]">
             PROFILE ID: 04A
           </div>
-          <h1 className="font-headline-lg-mobile md:font-headline-lg text-primary mb-6 border-b-2 border-outline pb-4 flex items-center justify-between">
+          <h2 className="font-headline-lg-mobile md:font-headline-lg text-primary mb-6 border-b-2 border-outline pb-4 flex items-center justify-between">
             <span>PROFESSIONAL OVERVIEW</span>
             <span className="material-symbols-outlined text-4xl opacity-50">
               badge
             </span>
-          </h1>
+          </h2>
 
           {/* Metadata grid */}
           <motion.div
@@ -235,7 +236,7 @@ export default function Home() {
             GET IN TOUCH
           </a>
         </motion.div>
-      </motion.div>
+      </motion.section>
     </main>
   );
 }

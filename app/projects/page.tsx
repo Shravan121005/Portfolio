@@ -482,6 +482,23 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {/* ── SEO ONLY CONTENT: Ensure crawlers can read all projects ── */}
+      <div className="sr-only">
+        {projects.map((p) => (
+          <article key={`seo-${p.id}`}>
+            <h2>{p.title}</h2>
+            <p>{p.subtitle}</p>
+            <p>{p.description}</p>
+            <ul>
+              {p.tags.map((tag) => (
+                <li key={`seo-tag-${p.id}-${tag}`}>{tag}</li>
+              ))}
+            </ul>
+            <a href={p.github}>View Project on GitHub</a>
+          </article>
+        ))}
+      </div>
     </main>
   );
 }

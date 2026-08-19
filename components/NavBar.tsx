@@ -187,7 +187,7 @@ export default function NavBar() {
 
             <button
               onClick={toggleAccess}
-              aria-label="Toggle subject access panel"
+              aria-label="Toggle quick access panel"
               aria-expanded={isAccessOpen}
               className="
                 w-8 h-8

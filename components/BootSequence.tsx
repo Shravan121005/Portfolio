@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const BOOT_MESSAGES = [
   "ESTABLISHING SECURE CONNECTION...",
   "INITIALIZING PROFILE: SHRAVAN_JAIN...",
-  "DECRYPTING CASE FILE...",
+  "INITIALIZING PROFILE...",
   "ACCESS GRANTED.",
 ];
 
@@ -135,7 +135,7 @@ export default function BootSequence() {
 
         {/* Footer label */}
         <div className="flex justify-between mt-2 font-label-sm text-label-sm text-[#4d4732]">
-          <span>CLEARANCE: LEVEL-5</span>
+          <span>ROLE: ENGINEER</span>
           <span>{progressWidth}%</span>
         </div>
       </div>

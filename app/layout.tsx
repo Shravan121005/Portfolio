@@ -24,12 +24,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shravanjain.me"),
   title: {
-    default: "CASE FILE: SHRAVAN JAIN",
-    template: "%s | CASE FILE: SHRAVAN JAIN",
+    default: "Shravan Jain — ML Engineer & Full-Stack Developer",
+    template: "%s | Shravan Jain",
   },
   description:
-    "Classified developer dossier for Shravan Jain — ML Engineer & Full-Stack Developer at VIT. Explore classified technical projects, coding profiles, and certifications.",
+    "Computer Science undergraduate at VIT Bhopal focused on Machine Learning, full-stack development, data structures, and building practical software systems.",
   keywords: [
     "Shravan Jain",
     "Software Engineer",
@@ -47,16 +48,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://shravanjain.me",
-    siteName: "CASE FILE: SHRAVAN JAIN",
-    title: "CASE FILE: SHRAVAN JAIN — ML Engineer & Full-Stack Developer",
+    siteName: "Shravan Jain Portfolio",
+    title: "Shravan Jain — ML Engineer & Full-Stack Developer",
     description:
-      "Classified developer dossier for Shravan Jain. Explore technical projects, coding profiles, and certifications.",
+      "Computer Science undergraduate at VIT Bhopal focused on Machine Learning, full-stack development, data structures, and building practical software systems.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CASE FILE: SHRAVAN JAIN",
+    title: "Shravan Jain — ML Engineer & Full-Stack Developer",
     description:
-      "Classified developer dossier — ML Engineer & Full-Stack Developer.",
+      "Computer Science undergraduate at VIT Bhopal focused on Machine Learning, full-stack development, data structures, and building practical software systems.",
   },
   robots: {
     index: true,
@@ -79,6 +80,28 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Shravan Jain",
+              url: "https://shravanjain.me",
+              jobTitle: "ML Engineer & Full-Stack Developer",
+              description:
+                "Computer Science undergraduate at VIT Bhopal focused on Machine Learning, full-stack development, data structures, and building practical software systems.",
+              affiliation: {
+                "@type": "Organization",
+                name: "VIT Bhopal University",
+              },
+              sameAs: [
+                "https://github.com/Shravan121005",
+                "https://www.linkedin.com/in/shravan-jain-630009280/",
+              ],
+            }),
+          }}
         />
       </head>
 
@@ -108,7 +131,7 @@ export default function RootLayout({
         {/* Watermark */}
         <div className="fixed inset-0 pointer-events-none flex items-center justify-center z-0 overflow-hidden">
           <div className="font-headline-lg text-[150px] md:text-[300px] text-surface-container opacity-10 rotate-[-45deg] whitespace-nowrap select-none font-bold">
-            TOP SECRET
+            PORTFOLIO
           </div>
         </div>
 
