@@ -115,7 +115,7 @@ export default function Profile() {
         }
       >
         {/* Corner doc tag */}
-        <div className="absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-sm px-3 py-1 border-l border-b border-[#333]">
+        <div className="md:absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-sm px-3 py-1 border border-t-0 md:border-r-0 border-[#333] w-fit mb-6 md:mb-0">
           TECH-PROFILE-01
         </div>
 

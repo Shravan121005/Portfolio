@@ -407,19 +407,19 @@ export default function Projects() {
       </AnimatePresence>
 
       {/* ── Prev / Next navigation ── */}
-      <div className="mt-6 flex items-center justify-between">
+      <div className="mt-6 flex items-center justify-between gap-1 sm:gap-4">
         <button
           onClick={() => setActiveIdx((i) => Math.max(0, i - 1))}
           disabled={activeIdx === 0}
-          className="exhibit-tab px-4 py-2 flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+          className="exhibit-tab px-1.5 sm:px-4 py-2 flex items-center gap-1 sm:gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
           aria-label="Previous project"
         >
-          <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-          <span>PREV PROJECT</span>
+          <span className="material-symbols-outlined text-[14px] sm:text-[16px]">arrow_back</span>
+          <span className="text-[9px] sm:text-xs whitespace-nowrap">PREV PROJECT</span>
         </button>
 
         {/* Dot indicators */}
-        <div className="flex gap-2">
+        <div className="flex gap-1.5 sm:gap-2 shrink-0 px-1 justify-center">
           {projects.map((_, idx) => (
             <button
               key={idx}
@@ -442,11 +442,11 @@ export default function Projects() {
         <button
           onClick={() => setActiveIdx((i) => Math.min(projects.length - 1, i + 1))}
           disabled={activeIdx === projects.length - 1}
-          className="exhibit-tab px-4 py-2 flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+          className="exhibit-tab px-1.5 sm:px-4 py-2 flex items-center gap-1 sm:gap-2 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
           aria-label="Next project"
         >
-          <span>NEXT PROJECT</span>
-          <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          <span className="text-[9px] sm:text-xs whitespace-nowrap">NEXT PROJECT</span>
+          <span className="material-symbols-outlined text-[14px] sm:text-[16px]">arrow_forward</span>
         </button>
       </div>
 
