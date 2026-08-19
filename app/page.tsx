@@ -6,6 +6,7 @@ import {
   Variants,
 } from "motion/react";
 import Link from "next/link";
+import { handleEmailClick } from "../utils/contact";
 
 // ── Shared animation variants ────────────────────────────────────────────────
 
@@ -230,6 +231,7 @@ export default function Home() {
           {/* Secondary: contact */}
           <a
             href="mailto:shravanjain.dev@gmail.com"
+            onClick={handleEmailClick}
             className="bg-surface-container text-on-surface font-label-md text-label-md px-6 py-3 border-2 border-outline shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] btn-sweep flex items-center justify-center gap-2 cursor-pointer w-full sm:w-auto text-center hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150"
           >
             <span className="material-symbols-outlined text-[18px]">mail</span>

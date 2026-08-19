@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { handleEmailClick } from "../utils/contact";
 
 export default function Footer() {
   return (
@@ -35,6 +38,7 @@ export default function Footer() {
         </Link>
         <a
           href="mailto:shravanjain.dev@gmail.com"
+          onClick={handleEmailClick}
           className="text-on-surface-variant font-label-sm text-label-sm hover:text-primary-container transition-colors duration-200"
         >
           CONTACT

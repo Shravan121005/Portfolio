@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import DocumentModal from "./DocumentModal";
+import { handleEmailClick } from "../utils/contact";
 
 const navItems = [
   { name: "ABOUT", href: "/" },
@@ -548,6 +549,7 @@ export default function NavBar() {
 
             <motion.a
               href={CONTACT_LINKS.email}
+              onClick={handleEmailClick}
               title="Contact Me"
               className="
                 w-10 h-10
