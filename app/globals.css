@@ -242,24 +242,7 @@
     width: 100%;
   }
 
-  /* ── Credential document ── */
-  .credential-doc {
-    border: 1px solid #333333;
-    background-color: #161616;
-    position: relative;
-    box-shadow:
-      0 1px 0 0 #222,
-      0 2px 0 0 #1a1a1a,
-      0 3px 0 0 #111,
-      4px 6px 0px 0px rgba(0, 0, 0, 1);
-  }
 
-  /* ── Tape strip ── */
-  .tape {
-    display: block;
-    background-color: rgba(233, 196, 0, 0.45);
-    backdrop-filter: blur(2px);
-  }
 
   /* ── Evidence tag ── */
   .evidence-tag {

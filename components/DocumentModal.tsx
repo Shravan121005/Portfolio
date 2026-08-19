@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 
 // ── Document registry — add future documents here ─────────────────────────────
@@ -13,7 +14,7 @@ export interface DocumentEntry {
   filename: string;     // filename used for the download attribute
 }
 
-const DOCUMENTS: DocumentEntry[] = [
+export const DOCUMENTS: DocumentEntry[] = [
   {
     id: "resume",
     name: "SOFTWARE DEVELOPER & AI ENGINEER",
@@ -105,14 +106,12 @@ const cardVariants: Record<string, any> = {
 
 // ── PDF Viewer Overlay — large immersive viewer ────────────────────────────────
 
-function PDFViewerOverlay({
+export function PDFViewerOverlay({
   doc,
   onBack,
-  onClose,
 }: {
   doc: DocumentEntry;
   onBack: () => void;
-  onClose: () => void;
 }) {
   const viewerRef = useRef<HTMLDivElement>(null);
 
@@ -335,11 +334,29 @@ function DocumentCard({
 interface DocumentModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialDocId?: string;
 }
 
-export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
+export default function DocumentModal({ isOpen, onClose, initialDocId }: DocumentModalProps) {
   const [previewDoc, setPreviewDoc] = useState<DocumentEntry | null>(null);
+  const [mounted, setMounted] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Initialize preview doc when modal opens if initialDocId is provided
+  useEffect(() => {
+    if (isOpen && initialDocId) {
+      const doc = DOCUMENTS.find((d) => d.id === initialDocId);
+      if (doc) {
+        const t = setTimeout(() => setPreviewDoc(doc), 0);
+        return () => clearTimeout(t);
+      }
+    }
+  }, [isOpen, initialDocId]);
 
   // Reset to selector when modal closes
   useEffect(() => {
@@ -350,15 +367,22 @@ export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
     }
   }, [isOpen]);
 
-  // Escape key closes modal
+  // Consolidated close/back handler
+  const handleBackOrClose = useCallback(() => {
+    if (initialDocId) {
+      onClose(); // Closes the entire modal if opened directly
+    } else if (previewDoc) {
+      setPreviewDoc(null); // Goes back to selector
+    } else {
+      onClose(); // Closes selector
+    }
+  }, [initialDocId, previewDoc, onClose]);
+
+  // Escape key closes modal & scroll lock
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        if (previewDoc) {
-          setPreviewDoc(null); // go back to selector first
-        } else {
-          onClose();
-        }
+        handleBackOrClose();
       }
     }
     if (isOpen) {
@@ -369,7 +393,7 @@ export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-  }, [isOpen, previewDoc, onClose]);
+  }, [isOpen, handleBackOrClose]);
 
   // Click outside modal panel to close
   function handleBackdropClick(e: React.MouseEvent<HTMLDivElement>) {
@@ -378,7 +402,9 @@ export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
     }
   }
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -479,13 +505,13 @@ export default function DocumentModal({ isOpen, onClose }: DocumentModalProps) {
               <PDFViewerOverlay
                 key={`viewer-${previewDoc.id}`}
                 doc={previewDoc}
-                onBack={() => setPreviewDoc(null)}
-                onClose={onClose}
+                onBack={handleBackOrClose}
               />
             )}
           </AnimatePresence>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

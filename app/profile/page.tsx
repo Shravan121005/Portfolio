@@ -17,11 +17,6 @@ const slideLeft: Variants = {
   visible: { opacity: 1, x: 0 },
 };
 
-const stagger: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-};
-
 // ── Section wrapper with IntersectionObserver ─────────────────────────────────
 
 function RevealSection({
@@ -103,8 +98,6 @@ export default function Profile() {
 
   const headerRef = useRef<HTMLElement>(null);
   const headerInView = useInView(headerRef, { once: true });
-
-  const totalSkills = skillCategories.reduce((acc, c) => acc + c.skills.length, 0);
 
   return (
     <main className="w-full flex flex-col gap-16">

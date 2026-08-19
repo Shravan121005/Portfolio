@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useInView, Variants } from "motion/react";
+import { motion, useInView, Variants } from "motion/react";
 import { useRef } from "react";
 
 // ── Variants ──────────────────────────────────────────────────────────────────

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
 import { Courier_Prime, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";

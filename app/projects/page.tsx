@@ -167,10 +167,8 @@ function ExhibitTab({
 
 function ExhibitCard({
   project,
-  prefersReducedMotion,
 }: {
   project: (typeof projects)[number];
-  prefersReducedMotion: boolean | null;
 }) {
   const statusColor =
     project.status === "DEPLOYED"
@@ -405,7 +403,6 @@ export default function Projects() {
         <ExhibitCard
           key={activeProject.id}
           project={activeProject}
-          prefersReducedMotion={prefersReducedMotion}
         />
       </AnimatePresence>
 

@@ -22,10 +22,11 @@ export default function BootSequence() {
   useEffect(() => {
     // Returning visitors: skip directly to done
     if (sessionStorage.getItem("booted")) {
-      setPhase("done");
-      return;
+      const t = setTimeout(() => setPhase("done"), 0);
+      return () => clearTimeout(t);
     }
-    setPhase("boot");
+    const t2 = setTimeout(() => setPhase("boot"), 0);
+    return () => clearTimeout(t2);
   }, []);
 
   useEffect(() => {
