@@ -158,9 +158,9 @@ export default function EngineeringToolkit({
   const transitionBase = prefersReducedMotion
     ? { duration: 0 }
     : {
-        duration: 0.55,
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-      };
+      duration: 0.55,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    };
 
   return (
     <motion.section
@@ -212,8 +212,8 @@ export default function EngineeringToolkit({
               {key === "CORE"
                 ? "primary stack"
                 : key === "ACTIVE"
-                ? "used in shipped projects"
-                : "studied & applied"}
+                  ? "used in shipped projects"
+                  : "studied & applied"}
             </span>
           </div>
         ))}
@@ -231,10 +231,10 @@ export default function EngineeringToolkit({
               prefersReducedMotion
                 ? { duration: 0 }
                 : {
-                    duration: 0.5,
-                    delay: catIdx * 0.07,
-                    ease: [0.16, 1, 0.3, 1],
-                  }
+                  duration: 0.5,
+                  delay: catIdx * 0.07,
+                  ease: [0.16, 1, 0.3, 1],
+                }
             }
           >
             {/* Category header */}
@@ -274,7 +274,7 @@ export default function EngineeringToolkit({
       {/* Footer note */}
       <div className="mt-6 pt-4 border-t border-outline-variant border-dashed flex flex-wrap gap-4 items-center justify-between">
         <p className="font-label-sm text-label-sm text-outline opacity-80">
-          TECHNOLOGIES SOURCED FROM RESUME // NO SYNTHETIC PROFICIENCY SCORES
+          TECHNICAL STACK // LANGUAGES • FRAMEWORKS • DATABASES • DEPLOYMENT
         </p>
         <div className="font-label-sm text-label-sm text-on-surface-variant">
           REF: SKILLS-MAP-001 //{" "}

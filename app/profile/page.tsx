@@ -147,16 +147,10 @@ export default function Profile() {
             {/* Main statement */}
             <div className="lg:col-span-2 bg-surface-container-lowest p-4 border border-outline-variant">
               <p className="font-body-md text-on-surface-variant leading-relaxed mb-4">
-                Machine Learning engineer and full-stack developer with a
-                demonstrated focus on building practical, deployable systems. Primary
-                interest lies at the intersection of data-driven modelling and
-                software engineering — designing end-to-end pipelines that move from
-                raw data through inference to production.
+                Computer Science and Engineering undergraduate at VIT Bhopal with a 9.18 CGPA, focused on Machine Learning and full-stack development. Strong foundation in Data Structures and Algorithms with hands-on experience building practical software systems.
               </p>
-              <p className="font-body-md text-on-surface-variant leading-relaxed">
-                Approaches problems analytically, experimentally, and
-                iteratively. Focused on systems that are measurable, reproducible,
-                and honest in their limitations.
+              <p className="font-body-md text-on-surface-variant leading-relaxed mb-4">
+                Well-grounded in core CSE concepts including OperatingSystems, DatabaseManagementSystems, ObjectOrientedProgramming, and Computer Networks. Driven by analytical problem-solving and a focus on building efficient, reliable, and deployable solutions.
               </p>
             </div>
 
@@ -164,9 +158,9 @@ export default function Profile() {
             <div className="flex flex-col gap-3">
               {[
                 { label: "SKILL CATEGORIES", value: String(skillCategories.length) },
-                { label: "SYSTEMS CATALOGUED", value: String(totalSkills) },
-                { label: "PROJECTS DEPLOYED", value: "04" },
-                { label: "PRIMARY DOMAIN", value: "ML / AI" },
+                { label: "Problems Solved", value: "450+" },
+                { label: "Github Repos", value: "20+" },
+                { label: "PRIMARY DOMAIN", value: "Machine Learning" },
               ].map((stat) => (
                 <div key={stat.label} className="metric-box">
                   <div className="font-headline-md text-xl text-primary leading-none mb-0.5">

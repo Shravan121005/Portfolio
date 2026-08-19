@@ -101,7 +101,7 @@ export default function NavBar() {
             md:text-label-md
           "
         >
-          SHRAVAN_JAIN // PROFILE
+          SHRAVAN_JAIN
         </Link>
 
         {/* --------------------------------------------------

@@ -70,13 +70,13 @@ export default function Home() {
             src="/profile.png"
           />
           <div className="font-label-md text-label-md text-on-surface-variant flex justify-between border-b border-outline-variant pb-2">
-            <span>RECORD NO: SJ-89-X</span>
+            <span>ROLE: CSE</span>
             <span className="text-error font-bold blinking-cursor">
-              STATUS: ACTIVE
+              FOCUS: ML + DSA
             </span>
           </div>
           <div className="mt-4 font-label-md text-body-md text-on-surface opacity-70 italic">
-            &quot;Models.Systems.Logic.&quot;
+            &quot;Build. Learn. Deploy.&quot;
           </div>
         </div>
       </motion.div>
