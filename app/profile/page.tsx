@@ -58,30 +58,43 @@ function RevealSection({
   );
 }
 
-// ── Engineering focus areas ───────────────────────────────────────────────────
+// ── Stamp component ──────────────────────────────────────────────────────────
 
-const focusAreas = [
-  {
-    icon: "psychology",
-    title: "MACHINE LEARNING SYSTEMS",
-    body: "Building end-to-end ML pipelines — from feature engineering and model selection through deployment and monitoring. Particular interest in supervised learning, model interpretability, and inference efficiency.",
-  },
-  {
-    icon: "code",
-    title: "FULL-STACK ENGINEERING",
-    body: "Designing and building practical applications across the stack — backend APIs, data layers, and frontend interfaces that connect ML capabilities to real users.",
-  },
-  {
-    icon: "rocket_launch",
-    title: "DEPLOYMENT & SYSTEMS",
-    body: "Containerising and deploying ML services with Docker and FastAPI. Interest in scalable backend architecture, API design, and the operational side of production systems.",
-  },
-  {
-    icon: "memory",
-    title: "ALGORITHMIC PROBLEM SOLVING",
-    body: "Consistent competitive programming practice. Strong foundation in data structures, algorithms, and analytical thinking applied to both contest problems and engineering challenges.",
-  },
-];
+function Stamp({
+  text,
+  colorClass,
+}: {
+  text: string;
+  colorClass: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-20px" });
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      ref={ref}
+      className={`font-headline-md text-xl border-2 px-2 py-0.5 inline-block select-none ${colorClass}`}
+      style={{ borderRadius: 4, transform: "rotate(-15deg)" }}
+      initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.8 }}
+      animate={
+        inView
+          ? { opacity: 0.85, scale: 1 }
+          : { opacity: 0, scale: 1.8 }
+      }
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : {
+            duration: 0.22,
+            ease: [0.175, 0.885, 0.32, 1.275],
+          }
+      }
+    >
+      {text}
+    </motion.div>
+  );
+}
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
@@ -181,6 +194,102 @@ export default function Profile() {
         <EngineeringToolkit prefersReducedMotion={prefersReducedMotion} />
       </div>
 
+      {/* ══ LEADERSHIP & EXPERIENCE ════════════════════════════════════════════ */}
+      <RevealSection delay={0.05}>
+        <div>
+          {/* Section header */}
+          <div className="border-b border-outline-variant pb-4 mb-8">
+            <h2 className="font-headline-md text-headline-md text-primary uppercase tracking-tight flex items-center gap-3">
+              <span className="material-symbols-outlined text-primary-container text-2xl">
+                groups
+              </span>
+              LEADERSHIP &amp; EXPERIENCE
+            </h2>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {/* VITERA */}
+            <RevealSection delay={0.1} variant="fadeUp">
+              <div className="dossier-card p-4 hover:-translate-y-1 transition-transform duration-200">
+                <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-start mb-3">
+                  <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
+                    <div className="absolute inset-0 bg-secondary opacity-10" />
+                    <span
+                      className="material-symbols-outlined text-secondary"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      groups
+                    </span>
+                  </div>
+                  <div className="flex-grow">
+                    <div className="flex flex-wrap justify-between items-baseline gap-1 mb-1">
+                      <h4 className="font-label-md text-primary">VITERA CLUB // TECH CO-LEAD</h4>
+                      <span className="font-label-sm text-on-surface-variant text-[11px]">
+                        NOV 2023 — FEB 2026
+                      </span>
+                    </div>
+                    <p className="font-body-md text-on-surface-variant text-sm">
+                      Led a team of 10 members. Organised 5 technical workshops and
+                      coding events for 300+ students. Mentored junior members in
+                      Python, Git &amp; Machine Learning fundamentals.
+                    </p>
+                  </div>
+                </div>
+                {/* VITERA metrics row */}
+                <div className="grid grid-cols-3 gap-2 pt-3 border-t border-outline-variant">
+                  {[
+                    { value: "10", label: "TEAM" },
+                    { value: "5", label: "WORKSHOPS" },
+                    { value: "300+", label: "STUDENTS" },
+                  ].map((m) => (
+                    <div key={m.label} className="metric-box text-center py-2">
+                      <div className="font-headline-md text-lg text-primary leading-none mb-0.5">
+                        {m.value}
+                      </div>
+                      <div className="font-label-sm text-[9px] text-outline tracking-widest">
+                        {m.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-3 flex justify-end">
+                  <Stamp text="LEADERSHIP" colorClass="border-primary-container text-primary-container" />
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* GirlScript */}
+            <RevealSection delay={0.15} variant="fadeUp">
+              <div className="dossier-card p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center hover:-translate-y-1 transition-transform duration-200">
+                <div className="w-12 h-12 bg-surface-container-high border border-outline flex items-center justify-center relative shrink-0">
+                  <div className="absolute inset-0 bg-primary-container opacity-10" />
+                  <span
+                    className="material-symbols-outlined text-primary-container"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    code
+                  </span>
+                </div>
+                <div className="flex-grow">
+                  <div className="flex justify-between items-baseline mb-1">
+                    <h4 className="font-label-md text-primary">OP: GIRLSCRIPT SUMMER OF CODE</h4>
+                    <span className="font-label-sm text-on-surface-variant">GSSoC</span>
+                  </div>
+                  <p className="font-body-md text-on-surface-variant text-sm">
+                    Open-source development experience contributing to collaborative
+                    software projects and real-world development workflows.
+                  </p>
+                </div>
+                <Stamp
+                  text="CONTRIBUTOR"
+                  colorClass="border-secondary text-secondary"
+                />
+              </div>
+            </RevealSection>
+          </div>
+        </div>
+      </RevealSection>
+
       {/* ══ PROBLEM SOLVING / DSA ════════════════════════════════════════════ */}
       <RevealSection delay={0.05}>
         <div className="dossier-card p-dossier-padding">
@@ -261,62 +370,6 @@ export default function Profile() {
               ))}
             </div>
           </div>
-        </div>
-      </RevealSection>
-
-      {/* ══ ENGINEERING FOCUS ════════════════════════════════════════════════ */}
-      <RevealSection delay={0.05}>
-        <div>
-          {/* Section header */}
-          <div className="border-b border-outline-variant pb-4 mb-8">
-            <div className="font-label-sm text-label-sm text-outline mb-1 tracking-widest">
-              INTEREST VECTOR // CURRENT TRAJECTORY
-            </div>
-            <h2 className="font-headline-lg-mobile md:font-headline-md text-primary uppercase tracking-tight">
-              ENGINEERING FOCUS
-            </h2>
-            <p className="font-body-md text-on-surface-variant mt-2 max-w-xl">
-              Active areas of interest and ongoing development. Reflects current
-              direction, not claimed expertise.
-            </p>
-          </div>
-
-          {/* Focus grid */}
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-            variants={stagger}
-            initial={prefersReducedMotion ? false : "hidden"}
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            {focusAreas.map((area) => (
-              <motion.div
-                key={area.title}
-                className="skill-cell p-5 group"
-                variants={fadeUp}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={
-                  prefersReducedMotion
-                    ? {}
-                    : { y: -3, transition: { duration: 0.15 } }
-                }
-              >
-                {/* Icon + title */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="material-symbols-outlined text-primary-container group-hover:text-primary transition-colors">
-                    {area.icon}
-                  </span>
-                  <span className="font-label-md text-label-md text-primary-container group-hover:text-primary transition-colors tracking-wider">
-                    {area.title}
-                  </span>
-                </div>
-                {/* Body */}
-                <p className="font-body-md text-on-surface-variant text-sm leading-relaxed">
-                  {area.body}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </RevealSection>
 

@@ -180,7 +180,7 @@ export default function EngineeringToolkit({
             <div className="font-label-sm text-label-sm text-outline mb-1 tracking-widest">
               SYS-MAP-001 // TECHNICAL PROFILE
             </div>
-            <h2 className="font-headline-lg-mobile md:font-headline-md text-primary uppercase tracking-tight">
+            <h2 className="font-headline-md text-headline-md text-primary uppercase tracking-tight">
               ENGINEERING TOOLKIT
             </h2>
           </div>
