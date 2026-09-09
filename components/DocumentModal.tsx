@@ -17,7 +17,7 @@ export interface DocumentEntry {
 export const DOCUMENTS: DocumentEntry[] = [
   {
     id: "resume",
-    name: "SOFTWARE DEVELOPER & AI ENGINEER",
+    name: "SOFTWARE DEVELOPER & ML ENGINEER",
     description:
       "Full-stack & ML engineering resume — Python, C++, React, FastAPI, Docker. " +
       "Projects include DeepGuard AI (96.2% accuracy), BugInsight, and SmartDiet AI.",
